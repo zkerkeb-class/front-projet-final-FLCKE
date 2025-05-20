@@ -1,5 +1,5 @@
 @media (min-width: 481px) and (max-width: 768px) {
-    .login-container {
+    .register-container {
         width: 80%;
         margin: auto;
         display: flex;
@@ -21,7 +21,7 @@
 }
 
 @media (min-width: 769px) {
-    .login-container {
+    .register-container {
         width: 80%;
         display: flex;
         background-color: #f9fafbd7;
@@ -31,20 +31,18 @@
     .left-auth-picture {
         width: 50%;
         border-radius: 100%;
-        animation: logo-translateY 2s;
     }
 
     .right-auth-form {
         text-align: center;
         width: 50%;
         margin: auto;
-        animation: logo-translateYSecond 2s;
     }
 
 }
 
 @media (max-width: 480px) {
-    .login-container {
+    .register-container {
         width: 90%;
         background-color: #f9fafbd7;
         display: flex;
@@ -63,25 +61,5 @@
     .right-auth-form {
         text-align: center;
         width: 90%;
-    }
-}
-
-@keyframes logo-translateY {
-    from {
-        transform: translateY(2em);
-    }
-
-    to {
-        transform: translateY(0em);
-    }
-}
-
-@keyframes logo-translateYSecond {
-    from {
-        transform: translateY(-2em);
-    }
-
-    to {
-        transform: translateY(0em);
     }
 }
