@@ -1,0 +1,36 @@
+@media (min-width: 481px) and (max-width: 768px) {
+    .login-container {
+        width: 80%;
+        margin: auto;
+        display: flex;
+        background-color: #F9FAFB;
+        border-radius: 10px;
+    }
+
+    .left-auth-picture {
+        width: 50%;
+        border-radius: 100%;
+    }
+
+    .right-auth-form {
+        text-align: center;
+        width: 50%;
+        margin: auto;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        width: 100%;
+    }
+
+    .left-auth-picture {
+        display: none;
+    }
+
+    .right-auth-form {
+        text-align: center;
+        width: 100%;
+    }
+}
