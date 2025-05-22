@@ -1,17 +1,22 @@
-import React, { useEffect } from 'react'
+import React, { use, useEffect } from 'react'
 import './index.css'
 import { useState } from 'react'
 import Input from '../Input'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import BtnPrimary from '../ButtonPrimary'
+import { loginService, registerService } from '../../services/authServices.js'
+import { useAuth } from '../../auth/AuthProvider.jsx'
 function FormsAuth({ type }) {
     const [isLogin, setIsLogin] = useState(type === 'login')
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
         password: '',
-        phone: ''
+        phone: '',
+        role: 'locataire'
     })
+    const { loginContext } = useAuth();
+    const Navigate = useNavigate();
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData({
@@ -22,12 +27,37 @@ function FormsAuth({ type }) {
     useEffect(() => {
         console.log(formData)
     })
-
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        if (isLogin) {
+            // Handle login
+            console.log('Login data:', formData)
+            loginService(formData)
+                .then((response) => {
+                    console.log('Login successful:', response)
+                    loginContext(response?.user, response?.token)
+                    Navigate('/dashbord-pro')
+                })
+                .catch((error) => {
+                    console.error('Login error:', error)
+                })
+        } else {
+            // Handle registration
+            console.log('Registration data:', formData)
+            registerService(formData)
+                .then((response) => {
+                    Navigate('/login')
+                })
+                .catch((error) => {
+                    console.error('Registration error:', error)
+                })
+        }
+    }
 
 
     return (
         <div>
-            <form className="form-container" onChange={handleChange}>
+            <form className="form-container" onChange={handleChange} onSubmit={handleSubmit}>
                 <h2>{isLogin ? "Connexion" : "Inscription"}</h2>
                 {!isLogin && <Input type="text" name="fullName" placeholder="Nom" />}
                 <Input type="email" name="email" placeholder="Email" />
@@ -41,7 +71,7 @@ function FormsAuth({ type }) {
                         <p>Déjà un compte ? <Link to={"/login"}>Connectez-vous</Link></p>
                     )}
                 </div>
-                <BtnPrimary type="submit" text={ !isLogin? "Soumettre" : "Connecter"}/>
+                <BtnPrimary type="submit" text={!isLogin ? "Soumettre" : "Connecter"} />
             </form>
 
         </div>

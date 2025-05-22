@@ -5,7 +5,7 @@ function Input({ name, type, placeholder }) {
     return (
 
         <div className="input-container">
-            <input type={type} id="input" name={name} placeholder={placeholder} className="input-field" />
+            <input type={type} name={name} placeholder={placeholder} className="input-field" required />
         </div>
     )
 }
