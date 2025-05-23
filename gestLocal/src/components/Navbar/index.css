@@ -1,0 +1,160 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .navbar-logo {
+        width: 10rem;
+    }
+
+    .navbar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        /* width: 100%; */
+        height: 100vh;
+        background-color: #ffffff;
+
+    }
+
+    .navbar-menu {
+        height: 100%;
+    }
+
+    .navbar-menu ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 60%;
+    }
+
+    li a {
+        display: flex;
+        flex-direction: row;
+        color: #808080;
+        padding-inline: 10px;
+        align-items: center;
+    }
+
+    li:hover {
+        background-color: #065F46;
+        border-radius: 10px;
+    }
+
+    li a i {
+        margin: 1rem;
+    }
+
+    li a:hover {
+        color: #ffffff;
+    }
+    .navbar-logout {
+            margin-bottom: 20%;
+    }
+}
+
+@media (min-width: 769px) {
+    .navbar-logo {
+        width: 10rem;
+    }
+
+    .navbar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        /* width: 100%; */
+        height: 100vh;
+        background-color: #ffffff;
+
+    }
+
+    .navbar-menu {
+        height: 100%;
+    }
+
+    .navbar-menu ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 60%;
+    }
+
+    li a {
+        display: flex;
+        flex-direction: row;
+        color: #808080;
+        padding-inline: 10px;
+        align-items: center;
+    }
+
+    li:hover {
+        background-color: #065F46;
+        border-radius: 10px;
+    }
+
+    li a i {
+        margin: 1rem;
+    }
+
+    li a:hover {
+        color: #ffffff;
+    }
+
+    .navbar-logout {
+        margin-bottom: 20%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .navbar-header,
+    .navbar-logout {
+        display: none;
+    }
+
+    .navbar {
+        position: fixed;
+        bottom: 0;
+        left:0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100vw;
+        background-color: #ffffff;
+
+    }
+
+    .navbar-menu {
+        width: 100%;
+
+    }
+
+    .navbar ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    li a {
+        display: flex;
+        flex-direction: column;
+        color: #808080;
+    }
+
+    li a:hover {
+        color: #065F46;
+    }
+
+}

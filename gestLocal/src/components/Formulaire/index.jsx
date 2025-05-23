@@ -36,7 +36,7 @@ function FormsAuth({ type }) {
                 .then((response) => {
                     console.log('Login successful:', response)
                     loginContext(response?.user, response?.token)
-                    Navigate('/dashbord-pro')
+                    Navigate('/dashboard-pro')
                 })
                 .catch((error) => {
                     console.error('Login error:', error)
