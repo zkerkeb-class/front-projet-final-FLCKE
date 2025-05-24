@@ -4,24 +4,48 @@ import './index.css'
 import BtnPrimary from '../ButtonPrimary'
 import { useState } from 'react';
 import { useEffect } from 'react';
-function Card({ title, badge, price, location, listFonction, type }) {
+import { deleteProperties } from '../../services/propertiesServices';
+function Card({ id, title, badge, price, location, listFonction, type, onDelete }) {
   const [visible, setVisible] = useState(false);
-  const [btn1, setBtn1] = useState("");
-  const [btn2, setBtn2] = useState("");
+  const [btn1, setBtn1] = useState(false);
   const handleClick = () => {
     setVisible(!visible);
   }
   useEffect(() => {
     if (type === "leases") {
-      setBtn1("Suspendre");
-      setBtn2("Télécharger");
+      setBtn1(true);
     } else if (type === "properties") {
-      setBtn1("Modifier");
-      setBtn2("Supprimer");
+      setBtn1(false);
+
     }
-  })
+  }, [type]);
+
+  const handleBtnClick = (action) => {
+    if (action === 'suspend') {
+      // Logic to suspend the property
+      console.log('Property suspended');
+    } else if (action === 'download') {
+      // Logic to download the property details
+      console.log('Property details downloaded');
+    } else if (action === 'edit') {
+      // Logic to edit the property
+      console.log('Property edited');
+    } else if (action === 'delete') {
+      // Logic to delete the property
+      console.log('Delete button clicked');
+      deleteProperties(id)
+        .then(() => {
+          console.log('Property deleted successfully');
+          onDelete?.(id); // Call the onDelete function passed as a prop
+        })
+        .catch((error) => {
+          console.error('Error deleting property:', error);
+        });
+      console.log('Property deleted');
+    }
+  }
   return (
-    <div className="card" onClick={handleClick}>
+    <div className="card" >
       <div className="card-header">
         <p className="card-title">{title}</p>
         <Badge text={badge} />
@@ -33,9 +57,17 @@ function Card({ title, badge, price, location, listFonction, type }) {
         </div>
       </div>
       <div className="card-footer">
-        {visible && <BtnPrimary text={btn1} className="Btn-action" />}
-        {visible && <BtnPrimary text={btn2} className="Btn-action" />}
-        {!visible &&<button className=" btn-footer" >...</button>}
+        {visible && <div className="card-footer-first-line">
+          {btn1 && <BtnPrimary text="Suspendre" className="Btn-action" onClick={() => handleBtnClick("suspend")} />}
+          {btn1 && <BtnPrimary text="Telechager" className="Btn-action" onClick={() => handleBtnClick("download")} />}
+          {!btn1 && <BtnPrimary text="Modifier" className="Btn-action" onClick={() => handleBtnClick("edit")} />}
+          {!btn1 && <BtnPrimary text="Supprimer" className="Btn-action" onClick={() => handleBtnClick("delete")} />}
+        </div>}
+        <div className="card-footer-second-line" onClick={handleClick}>
+          {!visible && <button className=" btn-footer" ><i class="fa-solid fa-angle-down"></i></button>}
+          {visible && <button className=" btn-footer" ><i class="fa-solid fa-angle-up"></i></button>}
+        </div>
+
       </div>
     </div>
   )

@@ -5,8 +5,10 @@ import { useAuth } from '../../auth/AuthProvider'
 import { useEffect } from 'react'
 import { getMyProperties } from '../../services/propertiesServices'
 import { useState } from 'react'
+import Modal from '../../components/Modal'
 function Properties() {
     const [properties, setProperties] = useState([])
+    const [showModal, setShowModal] = useState(false);
     const { user } = useAuth()
     useEffect(() => {
         getMyProperties(user._id)
@@ -18,12 +20,17 @@ function Properties() {
                 console.log(err)
             })
     }
-    , [user])
-  return (
-      <LayoutSecondForm>
-         {properties && <CardList formData={properties} type="properties" />}
-      </LayoutSecondForm>
-  )
+        , [user])
+    const handleAddProperty = () => {
+        console.log("Add property clicked");
+        setShowModal(!showModal);
+    }
+    return (
+        <LayoutSecondForm>
+            {properties && <CardList formData={properties} onToggle={handleAddProperty} type="properties" />}
+            <Modal title={"fzfzf"} isOpen={showModal} children={"fzffzfzfzz"} onClose={() => setShowModal(false)} />
+        </LayoutSecondForm>
+    )
 }
 
 export default Properties

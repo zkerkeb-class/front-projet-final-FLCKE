@@ -48,11 +48,19 @@
 
     .card-footer {
         display: flex;
-        flex-direction: row;
-        justify-content: space-around;
+        flex-direction: column;
+        justify-content: space-between;
         align-items: bottom;
-        margin-top: 5%;
+        margin-top: 2%;
         width: 100%;
+    }
+    .card-footer-first-line{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-block: 5%;
     }
 
     .btn-footer {

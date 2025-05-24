@@ -1,11 +1,13 @@
 import React from 'react'
 import './index.css'
 import { useNavigate } from 'react-router-dom'
-function BtnPrimary({ text, type, to }) {
+function BtnPrimary({ text, type, to, onClick }) {
     const navigate = useNavigate()
     const handleClick = () => {
         if (to) {
             navigate(to)
+        } else if (onClick) {
+            onClick()
         }
     }
     return (

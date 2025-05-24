@@ -9,3 +9,7 @@ export async function getMyProperties(userId) {
     const response = await axiosInstance.get(`/properties/getAll/${userId}`);
     return response.data;
 }
+export async function deleteProperties(id) {
+    const response = await axiosInstance.delete(`/properties/${id}`);
+    return response.data;
+}
