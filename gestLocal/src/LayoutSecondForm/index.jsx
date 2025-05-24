@@ -4,8 +4,10 @@ import Navbar from '../components/Navbar'
 function LayoutSecondForm({ children }) {
     return (
         <div className="layout-page">
-            <Navbar />
-            {children}
+            <Navbar className="navBar" />
+            <div className='layout-content'>
+                {children}
+            </div>
         </div>
     )
 }

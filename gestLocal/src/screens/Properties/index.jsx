@@ -8,6 +8,7 @@ import { useState } from 'react'
 import Modal from '../../components/Modal'
 import PropertiesForms from '../../components/PropertiesForms'
 import { useLocation } from 'react-router-dom'
+import Table from '../../components/Table'
 function Properties() {
     const [properties, setProperties] = useState([])
     const [showModal, setShowModal] = useState(false);
@@ -37,6 +38,7 @@ function Properties() {
         <LayoutSecondForm>
             {properties && <CardList formData={properties} onToggle={handleAddProperty} type="properties" />}
             <Modal title="Ajouter un logement" isOpen={showModal} children={<PropertiesForms userId={user?._id} onclose={() => setShowModal(false)} />} onClose={() => setShowModal(false)} />
+            <Table type="properties" data={properties} title="Mes logements" onToggle={handleAddProperty} />
         </LayoutSecondForm>
     )
 }
