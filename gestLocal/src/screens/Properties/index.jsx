@@ -6,10 +6,16 @@ import { useEffect } from 'react'
 import { getMyProperties } from '../../services/propertiesServices'
 import { useState } from 'react'
 import Modal from '../../components/Modal'
+import PropertiesForms from '../../components/PropertiesForms'
+import { useLocation } from 'react-router-dom'
 function Properties() {
     const [properties, setProperties] = useState([])
     const [showModal, setShowModal] = useState(false);
     const { user } = useAuth()
+    const location = useLocation();
+    const refresh = location.state?.refresh; // Check if refresh state is passed
+
+
     useEffect(() => {
         getMyProperties(user._id)
             .then((result) => {
@@ -19,8 +25,10 @@ function Properties() {
             .catch((err) => {
                 console.log(err)
             })
-    }
-        , [user])
+        if (refresh) {
+            setShowModal(false);
+        }
+    }, [user._id, refresh]); // Add user._id and refresh to the dependency array
     const handleAddProperty = () => {
         console.log("Add property clicked");
         setShowModal(!showModal);
@@ -28,7 +36,7 @@ function Properties() {
     return (
         <LayoutSecondForm>
             {properties && <CardList formData={properties} onToggle={handleAddProperty} type="properties" />}
-            <Modal title={"fzfzf"} isOpen={showModal} children={"fzffzfzfzz"} onClose={() => setShowModal(false)} />
+            <Modal title="Ajouter un logement" isOpen={showModal} children={<PropertiesForms userId={user?._id} onclose={() => setShowModal(false)} />} onClose={() => setShowModal(false)} />
         </LayoutSecondForm>
     )
 }

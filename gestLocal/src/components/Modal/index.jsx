@@ -1,6 +1,6 @@
 import React from 'react'
 import './index.css'
-function Modal({ isOpen, onClose, title, children }) {
+function Modal({ isOpen, onClose, title, children  }) {
     return (
         <div>
             {isOpen && (
@@ -13,7 +13,7 @@ function Modal({ isOpen, onClose, title, children }) {
                             </button>
                         </div>
                         <div className="modal-body">
-                            {children}
+                            {children  }
                         </div>
                     </div>
                 </div>

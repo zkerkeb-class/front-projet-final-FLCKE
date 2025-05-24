@@ -38,6 +38,7 @@ function CardList({ formData, type, onToggle }) {
                 listFonction={item.listFonction}*/
                 />
             )) : <p className='card-list-empty'>Aucun logement trouvé</p>}
+            
 
         </div>
     )

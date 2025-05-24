@@ -5,8 +5,13 @@ import BtnPrimary from '../ButtonPrimary'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { deleteProperties } from '../../services/propertiesServices';
+import Modal from '../Modal';
+import PropertiesForms from '../PropertiesForms';
+import { useAuth } from '../../auth/AuthProvider';
 function Card({ id, title, badge, price, location, listFonction, type, onDelete }) {
   const [visible, setVisible] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const { user } = useAuth()
   const [btn1, setBtn1] = useState(false);
   const handleClick = () => {
     setVisible(!visible);
@@ -28,6 +33,7 @@ function Card({ id, title, badge, price, location, listFonction, type, onDelete 
       // Logic to download the property details
       console.log('Property details downloaded');
     } else if (action === 'edit') {
+      setShowModal(true);
       // Logic to edit the property
       console.log('Property edited');
     } else if (action === 'delete') {
@@ -69,6 +75,7 @@ function Card({ id, title, badge, price, location, listFonction, type, onDelete 
         </div>
 
       </div>
+      <Modal title="Modifier un logement" isOpen={showModal} children={<PropertiesForms userId={user?._id} propertyId={id} onclose={() => setShowModal(false)} />} onClose={() => setShowModal(false)} />
     </div>
   )
 }
