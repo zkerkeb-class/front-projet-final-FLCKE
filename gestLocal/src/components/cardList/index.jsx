@@ -4,6 +4,7 @@ import './index.css'
 import { use } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { format } from 'date-fns';
 function CardList({ formData, type, onToggle }) {
     const [data, setData] = useState([])
     useEffect(() => {
@@ -27,10 +28,10 @@ function CardList({ formData, type, onToggle }) {
                 <Card
                     key={index}
                     id={item._id}
-                    title={item.name}
+                    title={item.name || item.tenant_id?.fullName}
                     badge={item.status}
-                    price={item.rent_price}
-                    location={item.address}
+                    price={item.rent_price || format(item.end_date, 'dd/MM/yyyy') }
+                    location={item.address || item.property_id?.name}
                     onDelete={handleDelete}
                     listFonction="item.listFonction"
                     type={type}

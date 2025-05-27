@@ -44,12 +44,19 @@
     .table-title {
         font-size: 2rem;
     }
+
+    .column-data-btn {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-block: 5%;
+    }
 }
 
 @media (min-width:481px) and (max-width:768px) {
     .table-container {
         width: 70vw;
-        padding-inline:5%;
+        padding-inline: 5%;
     }
 
 
@@ -97,6 +104,12 @@
     .column-data {
 
         width: 5px;
+    }
+
+    .column-data-btn {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
     }
 }
 

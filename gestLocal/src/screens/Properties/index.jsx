@@ -21,7 +21,6 @@ function Properties() {
         getMyProperties(user._id)
             .then((result) => {
                 setProperties(result)
-                console.log()
             })
             .catch((err) => {
                 console.log(err)

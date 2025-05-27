@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { use } from 'react'
 import Badge from '../Badge'
 import './index.css'
 import BtnPrimary from '../ButtonPrimary'
@@ -8,9 +8,12 @@ import { deleteProperties } from '../../services/propertiesServices';
 import Modal from '../Modal';
 import PropertiesForms from '../PropertiesForms';
 import { useAuth } from '../../auth/AuthProvider';
+import { suspendLease } from '../../services/leasesServices';
+import { useNavigate } from 'react-router-dom';
 function Card({ id, title, badge, price, location, listFonction, type, onDelete }) {
   const [visible, setVisible] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
   const { user } = useAuth()
   const [btn1, setBtn1] = useState(false);
   const handleClick = () => {
@@ -27,6 +30,15 @@ function Card({ id, title, badge, price, location, listFonction, type, onDelete 
 
   const handleBtnClick = (action) => {
     if (action === 'suspend') {
+      suspendLease(id)
+        .then(() => {
+          console.log('Property suspended successfully');
+          navigate('/leases', { state: { refresh: Date.now() } });
+        })
+        .catch((error) => {
+          console.error('Error suspending property:', error);
+        });
+
       // Logic to suspend the property
       console.log('Property suspended');
     } else if (action === 'download') {
@@ -59,7 +71,8 @@ function Card({ id, title, badge, price, location, listFonction, type, onDelete 
       <div className="card-body">
         <div className="card-body-first-line">
           <p className="card-text">{location} </p>
-          <p className="card-text">{price} $/mois</p>
+          {btn1 && <p className="card-text">{price}</p>}
+          {!btn1 && <p className="card-text">{price} $/mois</p>}
         </div>
       </div>
       <div className="card-footer">
