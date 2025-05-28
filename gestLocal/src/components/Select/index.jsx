@@ -1,7 +1,7 @@
 import React, { use, useEffect, useState } from 'react'
 import './index.css'
 function Select({ list, name, defaultValue }) {
-    const [selectedValue, setSelectedValue] = useState(list[0].value);
+    const [selectedValue, setSelectedValue] = useState(list[0]?.value);
     const handleChange = (e) => {
         setSelectedValue(e.target.value);
     }

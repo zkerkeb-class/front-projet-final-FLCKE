@@ -25,3 +25,19 @@ export async function suspendLease(id) {
     const response = await axiosInstance.put(`/leases/suspend/${id}`);
     return response.data;
 }
+
+export async function downloadLease(id) {
+    const response = await axiosInstance.get(`/generate-contrat/${id}`, {
+        responseType: 'blob' // Important for downloading files
+    });
+    const blob = new Blob([response.data], { type: 'application/pdf' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `lease_${id}.pdf`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url); // Clean up the URL object
+    return response.data;
+}

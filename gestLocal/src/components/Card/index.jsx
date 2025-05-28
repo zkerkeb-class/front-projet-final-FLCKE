@@ -8,7 +8,7 @@ import { deleteProperties } from '../../services/propertiesServices';
 import Modal from '../Modal';
 import PropertiesForms from '../PropertiesForms';
 import { useAuth } from '../../auth/AuthProvider';
-import { suspendLease } from '../../services/leasesServices';
+import { downloadLease, suspendLease } from '../../services/leasesServices';
 import { useNavigate } from 'react-router-dom';
 function Card({ id, title, badge, price, location, listFonction, type, onDelete }) {
   const [visible, setVisible] = useState(false);
@@ -42,7 +42,12 @@ function Card({ id, title, badge, price, location, listFonction, type, onDelete 
       // Logic to suspend the property
       console.log('Property suspended');
     } else if (action === 'download') {
-      // Logic to download the property details
+      downloadLease(id).then(() => {
+        console.log('Property details downloaded successfully');
+      }).catch((error) => {
+        console.error('Error downloading property details:', error);
+      });
+
       console.log('Property details downloaded');
     } else if (action === 'edit') {
       setShowModal(true);

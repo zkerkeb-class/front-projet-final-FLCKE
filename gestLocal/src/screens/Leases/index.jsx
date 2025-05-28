@@ -5,6 +5,8 @@ import { getMyLeases } from '../../services/leasesServices';
 import Table from '../../components/Table';
 import { useLocation } from 'react-router-dom';
 import { useAuth } from '../../auth/AuthProvider';
+import LeasesForms from '../../components/LeasesForms';
+import Modal from '../../components/Modal';
 
 function Leases() {
     const [leases, setLeases] = useState([])
@@ -33,7 +35,7 @@ function Leases() {
     return (
         <LayoutSecondForm>
             {leases && <CardList formData={leases} onToggle={handleAddLease} type="leases" />}
-            {/*<Modal title="Ajouter un logement" isOpen={showModal} children={<PropertiesForms userId={user?._id} onclose={() => setShowModal(false)} />} onClose={() => setShowModal(false)} />*/}
+            <Modal title="Ajouter un locataire" isOpen={showModal} children={<LeasesForms userId={user?._id} onclose={() => setShowModal(false)} />} onClose={() => setShowModal(false)} />
             <Table type="leases" data={leases} title="Mes locataires" onToggle={handleAddLease} />
         </LayoutSecondForm>
     )

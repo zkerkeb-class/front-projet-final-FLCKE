@@ -8,7 +8,7 @@ import { deleteProperties } from '../../services/propertiesServices';
 import PropertiesForms from '../PropertiesForms';
 import { useAuth } from '../../auth/AuthProvider';
 import { format } from 'date-fns';
-import { suspendLease } from '../../services/leasesServices';
+import { downloadLease, suspendLease } from '../../services/leasesServices';
 import { useNavigate } from 'react-router-dom';
 
 function Table({ data, title, type, onToggle }) {
@@ -73,6 +73,12 @@ function Table({ data, title, type, onToggle }) {
                 });
             console.log('Property suspended');
         } else if (action === 'download') {
+            downloadLease(id).then(() => {
+                console.log('Property details downloaded successfully');
+            }).catch((error) => {
+                console.error('Error downloading property details:', error);
+            });
+
             // Logic to download the property details
             console.log('Property details downloaded');
         } else if (action === 'edit') {
