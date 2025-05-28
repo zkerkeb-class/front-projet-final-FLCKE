@@ -1,0 +1,11 @@
+@media (min-width: 481px) {
+   .register-link {
+      display: none;
+   }
+    
+}
+@media (max-width: 480px) {
+   .register-link {
+      display: block;
+   }
+}

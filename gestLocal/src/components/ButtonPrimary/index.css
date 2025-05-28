@@ -1,0 +1,16 @@
+.btn {
+    background-color: #10B981;
+    color: white;
+    align-items: center;
+    i {
+        display: none;
+    }
+}
+
+.btn:hover {
+    background-color: #065F46;
+    i {
+        display: inline;
+
+    }
+}

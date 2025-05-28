@@ -1,0 +1,16 @@
+.layout-page {
+    width: 100vw;
+    background: rgba(243, 242, 242, 0.822);
+
+}
+
+@media (min-width:481px) {
+
+    .layout-page {
+        height: 100vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+    }
+}

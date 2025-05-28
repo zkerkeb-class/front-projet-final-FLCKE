@@ -1,0 +1,20 @@
+.btn-secondary {
+    background-color: white;
+    color: #065F46;
+    border: #10B981 solid 2px;
+    border-radius: 5px;
+    align-items: center;
+    i {
+        display: none;
+    }
+}
+
+.btn-secondary:hover {
+    background-color: #065F46;
+    color: white;
+
+    i {
+        display: inline;
+
+    }
+}
