@@ -1,6 +1,6 @@
 a {
     text-decoration: none;
-    color: black;
+    color: var(--text-color);
 }
 
 ul {
@@ -22,7 +22,7 @@ ul {
         justify-content: space-between;
         /* width: 100%; */
         height: 100vh;
-        background-color: #ffffff;
+        background-color: var(--surface);
 
     }
 
@@ -40,13 +40,13 @@ ul {
     li a {
         display: flex;
         flex-direction: row;
-        color: #808080;
+        color: var(--muted-text);
         padding-inline: 10px;
         align-items: center;
     }
 
     li:hover {
-        background-color: #065F46;
+        background-color: var(--primary);
         border-radius: 10px;
     }
 
@@ -55,16 +55,25 @@ ul {
     }
 
     li a:hover {
-        color: #ffffff;
+        color: var(--text-color-hover);
     }
+
     .navbar-logout {
-            margin-bottom: 20%;
+        margin-bottom: 20%;
     }
 }
 
 @media (min-width: 769px) {
     .navbar-logo {
         width: 10rem;
+    }
+
+    .navbar-theme-toggle {
+        width: 6rem;
+        margin: 1rem;
+        background-color: var(--background-second);
+        border: var(--border) 1px solid;
+
     }
 
     .navbar {
@@ -76,7 +85,7 @@ ul {
         justify-content: space-between;
         /* width: 100%; */
         height: 100vh;
-        background-color: #ffffff;
+        background-color: var(--surface);
 
     }
 
@@ -94,13 +103,13 @@ ul {
     li a {
         display: flex;
         flex-direction: row;
-        color: #808080;
+        color: var(--muted-text);
         padding-inline: 10px;
         align-items: center;
     }
 
     li:hover {
-        background-color: #065F46;
+        background-color: var(--primary);
         border-radius: 10px;
     }
 
@@ -109,7 +118,7 @@ ul {
     }
 
     li a:hover {
-        color: #ffffff;
+        color: var(--text-color-hover);
     }
 
     .navbar-logout {
@@ -127,12 +136,12 @@ ul {
     .navbar {
         position: fixed;
         bottom: 0;
-        left:0;
+        left: 0;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         width: 100vw;
-        background-color: #ffffff;
+        background-color: var(--surface);
 
     }
 
@@ -150,11 +159,11 @@ ul {
     li a {
         display: flex;
         flex-direction: column;
-        color: #808080;
+        color: var(--muted-text);
     }
 
     li a:hover {
-        color: #065F46;
+        color: var(--text-color-hover);
     }
 
 }

@@ -12,7 +12,7 @@ function BtnPrimary({ text, type, to, onClick }) {
     }
     return (
         <button className="btn" type={type} onClick={handleClick}  >
-            {text} <i class="fa-solid fa-arrow-right"></i>
+            {text} 
         </button>
 
     )

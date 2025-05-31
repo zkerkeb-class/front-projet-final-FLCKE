@@ -1,10 +1,14 @@
 import React from 'react'
 import './index.css'
 import { useNavigate } from 'react-router-dom'
-function BtnSecondary({ text, type, to }) {
+function BtnSecondary({ text, type, to, onClick }) {
     const navigate = useNavigate()
     const handleClick = () => {
-        navigate(to)
+        if (to) {
+            navigate(to)
+        } else if (onClick) {
+            onClick()
+        }
     }
 
     return (

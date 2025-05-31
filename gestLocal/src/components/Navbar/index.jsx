@@ -6,9 +6,14 @@ import BtnPrimary from '../ButtonPrimary'
 import BtnSecondary from '../ButtonSecondary';
 import logo2 from '../../assets/img/logo/logo2vert.png'
 import { Link } from 'react-router-dom';
-
+import { useAuth } from '../../auth/AuthProvider';
+import { useTheme } from '../../config/ThemeContext';
+import { lightTheme,darkTheme } from '../../config/theme';
 function Navbar() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const { user, logoutContext } = useAuth();
+    const { theme, toggleTheme } = useTheme();
+
     return (
         <div>
             <div className="navbar">
@@ -23,9 +28,15 @@ function Navbar() {
 
                     </ul>
                 </div>
+                <div>
+                    <button onClick={() => toggleTheme() } className="navbar-theme-toggle">
+                        {theme === lightTheme && <i className="fa-solid fa-sun"></i>}
+                        {theme === darkTheme && <i className="fa-solid fa-moon"></i>}
+                    </button>
+                </div>
                 {!isLoggedIn && <div className="navbar-logout">
                     {/* <button className="navbar-button"><i class="fa-solid fa-arrow-right-from-bracket"></i> Quitter</button> */}
-                    <BtnSecondary  text="Quitter" type="button" />
+                    <BtnSecondary text="Quitter" type="button" onClick={() => { logoutContext() }} />
                 </div>}
                 {isLoggedIn && <div className="navbar-auth">
                     <BtnPrimary to='/login' text="Connexion" type="button" />

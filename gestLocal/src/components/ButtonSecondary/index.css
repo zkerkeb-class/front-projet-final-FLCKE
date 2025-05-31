@@ -1,7 +1,7 @@
 .btn-secondary {
-    background-color: white;
-    color: #065F46;
-    border: #10B981 solid 2px;
+    background-color: var(--surface);
+    color: var(--text-color);
+    border: var(--secondary) solid 2px;
     border-radius: 5px;
     align-items: center;
     i {
@@ -10,8 +10,8 @@
 }
 
 .btn-secondary:hover {
-    background-color: #065F46;
-    color: white;
+    background-color: var(--primary);
+    color: var(--text-color);
 
     i {
         display: inline;

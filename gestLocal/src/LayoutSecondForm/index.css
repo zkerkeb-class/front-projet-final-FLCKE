@@ -1,13 +1,15 @@
 .layout-page {
     width: 100vw;
-    background: rgba(243, 242, 242, 0.822);
+    height: 100%;
+    background: var(--background-color);
+
 
 }
 
 @media (min-width:481px) {
 
     .layout-page {
-        height: 100vh;
+        height: 100%;
         display: flex;
         flex-direction: row;
         justify-content: space-around;

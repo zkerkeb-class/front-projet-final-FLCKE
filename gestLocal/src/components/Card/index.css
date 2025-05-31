@@ -6,7 +6,7 @@
 
 @media (max-width: 480px) {
     .card {
-        background-color: rgb(255, 255, 255);
+        background-color: var(--surface) ;
         width: 80%;
         padding: 5%;
         border-radius: 20px;
@@ -14,7 +14,6 @@
     }
 
     p {
-        color: black;
         margin: 0;
         white-space: nowrap;
         overflow: hidden;
@@ -69,7 +68,7 @@
         padding: 2%;
     }
     .btn-footer:hover {
-        background-color: #065F46;
+        background-color:var(--primary);
         color: white;
     }
 }

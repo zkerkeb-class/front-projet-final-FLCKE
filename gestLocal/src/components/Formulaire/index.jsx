@@ -4,8 +4,8 @@ import { useState } from 'react'
 import Input from '../Input'
 import { Link, useNavigate } from 'react-router-dom'
 import BtnPrimary from '../ButtonPrimary'
-import { loginService, registerService } from '../../services/authServices.js'
-import { useAuth } from '../../auth/AuthProvider.jsx'
+import { loginService, registerService } from '../../services/authServices'
+import { useAuth } from '../../auth/AuthProvider'
 function FormsAuth({ type }) {
     const [isLogin, setIsLogin] = useState(type === 'login')
     const [formData, setFormData] = useState({
