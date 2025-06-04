@@ -13,6 +13,14 @@ ul {
         width: 10rem;
     }
 
+    .navbar-theme-toggle {
+        width: 6rem;
+        margin: 1rem;
+        background-color: var(--background-second);
+        border: var(--border) 1px solid;
+
+    }
+
     .navbar {
         position: fixed;
         left: 0;
@@ -113,6 +121,8 @@ ul {
         border-radius: 10px;
     }
 
+
+
     li a i {
         margin: 1rem;
     }
@@ -128,11 +138,11 @@ ul {
 
 @media (max-width: 480px) {
 
+    .navbar-theme-toggle,
     .navbar-header,
     .navbar-logout {
         display: none;
     }
-
     .navbar {
         position: fixed;
         bottom: 0;

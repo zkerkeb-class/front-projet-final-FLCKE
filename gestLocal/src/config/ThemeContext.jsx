@@ -31,12 +31,13 @@ export const ThemeProvider = ({ children }) => {
         root.style.setProperty('--border', theme.border);
         root.style.setProperty('--error', theme.error);
         root.style.setProperty('--badge-actif-color', theme.badge_actif_color);
-
+        root.style.setProperty('--text-color-white', theme.text_color_white);
         root.style.setProperty('--badge-actif-bg-color', theme.badge_actif_bg_color);
         root.style.setProperty('--badge-suspendu-bg-color', theme.badge_suspendu_bg_color);
         root.style.setProperty('--badge-suspendu-color', theme.badge_suspendu_color);
         root.style.setProperty('--badge-termine-bg-color', theme.badge_termine_bg_color);
         root.style.setProperty('--badge-termine-color', theme.badge_termine_color);
+        root.style.setProperty('--shadow-color', theme.shadowcolor);
     }, [theme]);
 
     return (

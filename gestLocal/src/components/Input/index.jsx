@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './index.css'
+// import { useTranslation } from "react-i18next";
 
 function Input({ name, type, placeholder, defaultValue }) {
     const [value, setValue] = useState("")

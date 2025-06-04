@@ -4,17 +4,10 @@
     border: var(--secondary) solid 2px;
     border-radius: 5px;
     align-items: center;
-    i {
-        display: none;
-    }
+ 
 }
 
 .btn-secondary:hover {
     background-color: var(--primary);
     color: var(--text-color);
-
-    i {
-        display: inline;
-
-    }
 }

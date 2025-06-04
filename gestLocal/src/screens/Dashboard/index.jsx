@@ -4,12 +4,16 @@ import Layout from '../../Layout'
 import Badge from '../../components/Badge'
 import Card from '../../components/Card'
 import LayoutSecondForm from '../../LayoutSecondForm'
-import CardList from '../../components/cardList'
+import Banner from '../../components/Banner'
+import './index.css'
+import CardResume from '../../components/CardResume'
+import CardResumeList from '../../components/CardResumeList'
 function Dashbord() {
-    
+
   return (
     <LayoutSecondForm>
-      <CardList formData={""} />
+      <Banner className="the-banner" />
+      <CardResumeList />
     </LayoutSecondForm>
   )
 }

@@ -1,0 +1,10 @@
+.card-resume-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    gap: 10%;
+
+}
+.card-resume-list-container h1{
+    text-align: left;
+}

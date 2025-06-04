@@ -10,9 +10,11 @@ import { useAuth } from '../../auth/AuthProvider';
 import { format } from 'date-fns';
 import { downloadLease, suspendLease } from '../../services/leasesServices';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
 
 function Table({ data, title, type, onToggle }) {
     const [btn1, setBtn1] = useState(false);
+    const { t } = useTranslation("common");
     const { user } = useAuth()
     const [listTitle, setListTitle] = useState([]);
     const [dataTable, setDataTable] = useState([]);
@@ -22,36 +24,36 @@ function Table({ data, title, type, onToggle }) {
     useEffect(() => {
         if (type === "properties") {
             setListTitle([{
-                "title": "Nom"
+                "title": t("fullName")
             },
             {
-                "title": "Lieu"
+                "title": t("location")
             },
             {
-                "title": "Prix"
+                "title": t("price")
             },
             {
-                "title": "Statut"
+                "title":  t("status")
             },
             {
-                "title": "Action"
+                "title": t("action")
             }])
             setBtn1(false);
         } else {
             setListTitle([{
-                "title": "Nom"
+                "title": t("leases")
             },
             {
-                "title": "Logement"
+                "title": t("properties")
             },
             {
-                "title": "Date de fin"
+                "title": t("end_date")
             },
             {
-                "title": "Statut"
+                "title": t("status")
             },
             {
-                "title": "Action"
+                "title": t("action")
             }])
             setBtn1(true);
         }
@@ -108,7 +110,7 @@ function Table({ data, title, type, onToggle }) {
         <div className='table-container'>
             <div className='table-title-header'>
                 <p className='table-title'>{title}</p>
-                <BtnPrimary className='btn-add' text=" Ajouter" onClick={() => onToggle()} ></BtnPrimary>
+                <BtnPrimary className='btn-add' text={t('add_btn')} onClick={() => onToggle()} ></BtnPrimary>
             </div>
             <table className='table'>
                 <thead className='table-header'>
@@ -128,10 +130,10 @@ function Table({ data, title, type, onToggle }) {
                                 <Badge text={dataInstance?.status} />
                             </td>
                             <td className='column-data-btn'>
-                                {btn1 && <BtnPrimary text="Suspendre" className="Btn-action" onClick={() => handleBtnClick("suspend", dataInstance?._id)} />}
-                                {btn1 && <BtnPrimary text="Telechager" className="Btn-action" onClick={() => handleBtnClick("download", dataInstance?._id)} />}
-                                {!btn1 && <BtnPrimary text="Modifier" className="Btn-action" onClick={() => handleBtnClick("edit", dataInstance?._id)} />}
-                                {!btn1 && <BtnPrimary text="Supprimer" className="Btn-action" onClick={() => handleBtnClick("delete", dataInstance?._id)} />}
+                                {btn1 && <BtnPrimary text={t("suspend_btn")} className="Btn-action" onClick={() => handleBtnClick("suspend", dataInstance?._id)} />}
+                                {btn1 && <BtnPrimary text={t("download_btn")} className="Btn-action" onClick={() => handleBtnClick("download", dataInstance?._id)} />}
+                                {!btn1 && <BtnPrimary text={t("edit_btn")} className="Btn-action" onClick={() => handleBtnClick("edit", dataInstance?._id)} />}
+                                {!btn1 && <BtnPrimary text={t("delete_btn")} className="Btn-action" onClick={() => handleBtnClick("delete", dataInstance?._id)} />}
 
                             </td>
                         </tr>
@@ -139,7 +141,7 @@ function Table({ data, title, type, onToggle }) {
 
                 </tbody>
             </table>
-            <Modal title="Modifier un logement" isOpen={showModal} children={<PropertiesForms type="properties" userId={user._id} propertyId={propertyId} onclose={() => setShowModal(false)} />} onClose={() => setShowModal(false)} />
+            <Modal title={t("edit_property")} isOpen={showModal} children={<PropertiesForms type="properties" userId={user._id} propertyId={propertyId} onclose={() => setShowModal(false)} />} onClose={() => setShowModal(false)} />
         </div>
     )
 }

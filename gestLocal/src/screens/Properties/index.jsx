@@ -9,7 +9,9 @@ import Modal from '../../components/Modal'
 import PropertiesForms from '../../components/PropertiesForms'
 import { useLocation } from 'react-router-dom'
 import Table from '../../components/Table'
+import { useTranslation } from "react-i18next";
 function Properties() {
+    const { t } = useTranslation("common");
     const [properties, setProperties] = useState([])
     const [showModal, setShowModal] = useState(false);
     const { user } = useAuth()
@@ -36,8 +38,8 @@ function Properties() {
     return (
         <LayoutSecondForm>
             {properties && <CardList formData={properties} onToggle={handleAddProperty} type="properties" />}
-            <Modal title="Ajouter un logement" isOpen={showModal} children={<PropertiesForms userId={user?._id} onclose={() => setShowModal(false)} />} onClose={() => setShowModal(false)} />
-            <Table type="properties" data={properties} title="Mes logements" onToggle={handleAddProperty} />
+            <Modal title={t("add_property")} isOpen={showModal} children={<PropertiesForms userId={user?._id} onclose={() => setShowModal(false)} />} onClose={() => setShowModal(false)} />
+            <Table type="properties" data={properties} title={t('properties')} onToggle={handleAddProperty} />
         </LayoutSecondForm>
     )
 }

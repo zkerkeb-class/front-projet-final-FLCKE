@@ -9,7 +9,9 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../../auth/AuthProvider';
 import { useTheme } from '../../config/ThemeContext';
 import { lightTheme,darkTheme } from '../../config/theme';
+import { useTranslation } from "react-i18next";
 function Navbar() {
+    const { t } = useTranslation("common");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const { user, logoutContext } = useAuth();
     const { theme, toggleTheme } = useTheme();
@@ -22,9 +24,9 @@ function Navbar() {
                 </div>
                 <div className="navbar-menu">
                     <ul className="navbar-list">
-                        <li className="navbar-item"><Link to={"/dashboard-pro"} ><i class="fa-solid fa-house"></i>  <span className='text-on-off'> Tableau de bord</span> </Link></li>
-                        <li className="navbar-item"><Link to={"/leases"}><i class="fa-solid fa-file-fragment"></i> <span className='text-on-off'> Bails</span> </Link></li>
-                        <li className="navbar-item"><Link to={"/properties"}><i class="fa-solid fa-building-user"></i> <span className='text-on-off'> Logements </span></Link></li>
+                        <li className="navbar-item"><Link to={"/dashboard-pro"} ><i class="fa-solid fa-house"></i>  <span className='text-on-off'> {t("dashboard")} </span> </Link></li>
+                        <li className="navbar-item"><Link to={"/leases"}><i class="fa-solid fa-file-fragment"></i> <span className='text-on-off'>  {t("leases")} </span> </Link></li>
+                        <li className="navbar-item"><Link to={"/properties"}><i class="fa-solid fa-building-user"></i> <span className='text-on-off'>{t("properties")} </span></Link></li>
 
                     </ul>
                 </div>
@@ -36,12 +38,9 @@ function Navbar() {
                 </div>
                 {!isLoggedIn && <div className="navbar-logout">
                     {/* <button className="navbar-button"><i class="fa-solid fa-arrow-right-from-bracket"></i> Quitter</button> */}
-                    <BtnSecondary text="Quitter" type="button" onClick={() => { logoutContext() }} />
+                    <BtnSecondary text={t("logout")} type="button" onClick={() => { logoutContext() }} />
                 </div>}
-                {isLoggedIn && <div className="navbar-auth">
-                    <BtnPrimary to='/login' text="Connexion" type="button" />
-                    <BtnSecondary to='/register' text="S'inscrire" type="button" />
-                </div>}
+                
 
             </div>
         </div>

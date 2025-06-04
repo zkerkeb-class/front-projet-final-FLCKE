@@ -6,7 +6,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import BtnPrimary from '../ButtonPrimary'
 import { loginService, registerService } from '../../services/authServices'
 import { useAuth } from '../../auth/AuthProvider'
+import { useTranslation } from "react-i18next";
+
 function FormsAuth({ type }) {
+    const {t} = useTranslation("common");
     const [isLogin, setIsLogin] = useState(type === 'login')
     const [formData, setFormData] = useState({
         fullName: '',
@@ -58,20 +61,20 @@ function FormsAuth({ type }) {
     return (
         <div>
             <form className="form-container" onChange={handleChange} onSubmit={handleSubmit}>
-                <h2>{isLogin ? "Connexion" : "Inscription"}</h2>
-                {!isLogin && <Input type="text" name="fullName" placeholder="Nom" />}
-                <Input type="email" name="email" placeholder="Email" />
-                <Input type="password" name="password" placeholder="Mot de passe" />
-                {!isLogin && <Input type="tel" name="phone" placeholder="Téléphone" />}
+                <h2>{isLogin ? t("login") : t("register")}</h2>
+                {!isLogin && <Input type="text" name="fullName" placeholder={t("fullName")} />}
+                <Input type="email" name="email" placeholder={t("email")} />
+                <Input type="password" name="password" placeholder={t("password")} />
+                {!isLogin && <Input type="tel" name="phone" placeholder={t("phone")} />}
 
                 <div className="register-link">
                     {isLogin ? (
-                        <p>Pas encore de compte ? <Link to={"/register"}>Inscrivez-vous</Link></p>
+                        <p>{t("no_account")} <Link to={"/register"}>{t("register_cta")}</Link></p>
                     ) : (
-                        <p>Déjà un compte ? <Link to={"/login"}>Connectez-vous</Link></p>
+                            <p>{t("already_account")} <Link to={"/login"}>{t("login_cta")}</Link></p>
                     )}
                 </div>
-                <BtnPrimary type="submit" text={!isLogin ? "Soumettre" : "Connecter"} />
+                <BtnPrimary type="submit" text={!isLogin ? t("submit")  :t("login")} />
             </form>
 
         </div>

@@ -16,6 +16,8 @@ export const lightTheme = {
     badge_suspendu_color: "#721c24", // Couleur du badge suspendu
     badge_termine_bg_color: "#fff3cd",       // Texte du badge actif
     badge_termine_color: "#856404",
+    shadowcolor: "rgba(0, 0, 0, 0.1)", // Couleur de l'ombre
+    text_color_white: "#ffffff", // Texte blanc pour les boutons
 };
 
 export const darkTheme = {
@@ -35,4 +37,6 @@ export const darkTheme = {
     badge_suspendu_color: "#721c24", // Couleur du badge suspendu
     badge_termine_bg_color: "#fff3cd",       // Texte du badge actif
     badge_termine_color: "#856404",
+    shadowcolor: "rgba(61, 61, 61, 0.5)", // Couleur de l'ombre
+    text_color_white: "#ffffff", // Texte blanc pour les boutons
 };

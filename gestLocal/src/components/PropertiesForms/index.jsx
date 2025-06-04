@@ -4,8 +4,11 @@
     import { createProperty, getPropertyById, updateProperty } from '../../services/propertiesServices';
     import { useNavigate } from 'react-router-dom';
 import BtnPrimary from '../ButtonPrimary';
+import './index.css';
+import { useTranslation } from "react-i18next";
     function PropertiesForms({ userId, propertyId, onclose}) {
         const navigate = useNavigate();
+        const { t } = useTranslation("common");
         const [property, setProperty] = useState(null);
         const [formData, setFormData] = useState({
             owner_id: userId,
@@ -32,9 +35,9 @@ import BtnPrimary from '../ButtonPrimary';
             }
         }, [propertyId, userId]);
         const listSelect = [
-            { label: "Selectionner le status", value: "" },
-            { label: "Disponible", value: "disponible" },
-            { label: "Louer", value: "louer" }
+            { label: t("select_status"), value: "" },
+            { label: t("select_disponible"), value: "disponible" },
+            { label: t("select_rent"), value: "louer" }
         ]
         const handleSubmit = (e) => {
             e.preventDefault();
@@ -80,11 +83,11 @@ import BtnPrimary from '../ButtonPrimary';
         return (
             <div>
                 <form className="form-container" onChange={handleChange} onSubmit={handleSubmit}>
-                    <Input name="name" type="text" defaultValue={property?.name} placeholder={"Entrer le nom"} />
-                    <Input name="address" type="text" defaultValue={property?.address} placeholder={"Entrer l'addresse"} />
-                    <Input name="rent_price" type="number" defaultValue={property?.rent_price} placeholder={"Entrer le loyer mensuel"} />
+                    <Input name="name" type="text" defaultValue={property?.name} placeholder={t("fullName")} />
+                    <Input name="address" type="text" defaultValue={property?.address} placeholder={t("location")} />
+                    <Input name="rent_price" type="number" defaultValue={property?.rent_price} placeholder={t("rent_monthly")} />
                     <Select list={listSelect} name="status" defaultValue={property?.status} />
-                    <BtnPrimary type="submit" text={propertyId?"Modifer":"Ajouter"} />
+                    <BtnPrimary type="submit" text={propertyId? t("edit_btn"):t("add_btn")} />
                 </form>
             </div>
         )

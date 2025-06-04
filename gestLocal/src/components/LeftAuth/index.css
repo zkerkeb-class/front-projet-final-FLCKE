@@ -37,8 +37,8 @@
     color: var(--text-color);
 }
 
-p,
-h1 {
+.left-auth-container p,
+.left-auth-container h1 {
     color: var(--text-color-secondary);
     font-weight: 500;
 }

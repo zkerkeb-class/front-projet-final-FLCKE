@@ -5,7 +5,10 @@ import { use } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { format } from 'date-fns';
+import { useTranslation } from "react-i18next";
+import BtnPrimary from '../ButtonPrimary'
 function CardList({ formData, type, onToggle }) {
+    const { t } = useTranslation("common");
     const [data, setData] = useState([])
     useEffect(() => {
         if (formData) {
@@ -20,8 +23,9 @@ function CardList({ formData, type, onToggle }) {
     return (
         <div className='card-list'>
             <div className='card-list-header'>
-                <p className='card-list-title'>Mes logements</p>
-                <button className='btn-add' onClick={() => onToggle()} ><i class="fa-solid fa-circle-plus"></i>    Ajouter</button>
+                <p className='card-list-title'>{t("properties")} </p>
+               
+                <BtnPrimary text={t('add_btn')} type="button" onClick={() => onToggle()} />
             </div>
 
             {data ? data.map((item, index) => (
@@ -33,7 +37,6 @@ function CardList({ formData, type, onToggle }) {
                     price={item.rent_price || format(item.end_date, 'dd/MM/yyyy') }
                     location={item.address || item.property_id?.name}
                     onDelete={handleDelete}
-                    listFonction="item.listFonction"
                     type={type}
                 /*
                 listFonction={item.listFonction}*/

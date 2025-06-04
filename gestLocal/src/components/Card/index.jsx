@@ -10,11 +10,13 @@ import PropertiesForms from '../PropertiesForms';
 import { useAuth } from '../../auth/AuthProvider';
 import { downloadLease, suspendLease } from '../../services/leasesServices';
 import { useNavigate } from 'react-router-dom';
-function Card({ id, title, badge, price, location, listFonction, type, onDelete }) {
+import { useTranslation } from "react-i18next";
+function Card({ id, title, badge, price, location, type, onDelete }) {
   const [visible, setVisible] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const { user } = useAuth()
+  const { t } = useTranslation("common");
   const [btn1, setBtn1] = useState(false);
   const handleClick = () => {
     setVisible(!visible);
@@ -82,10 +84,10 @@ function Card({ id, title, badge, price, location, listFonction, type, onDelete 
       </div>
       <div className="card-footer">
         {visible && <div className="card-footer-first-line">
-          {btn1 && <BtnPrimary text="Suspendre" className="Btn-action" onClick={() => handleBtnClick("suspend")} />}
-          {btn1 && <BtnPrimary text="Telechager" className="Btn-action" onClick={() => handleBtnClick("download")} />}
-          {!btn1 && <BtnPrimary text="Modifier" className="Btn-action" onClick={() => handleBtnClick("edit")} />}
-          {!btn1 && <BtnPrimary text="Supprimer" className="Btn-action" onClick={() => handleBtnClick("delete")} />}
+          {btn1 && <BtnPrimary text={t("suspend_btn")} className="Btn-action" onClick={() => handleBtnClick("suspend")} />}
+          {btn1 && <BtnPrimary text={t("download_btn")} className="Btn-action" onClick={() => handleBtnClick("download")} />}
+          {!btn1 && <BtnPrimary text={t("edit_btn")} className="Btn-action" onClick={() => handleBtnClick("edit")} />}
+          {!btn1 && <BtnPrimary text={t("delete_btn")} className="Btn-action" onClick={() => handleBtnClick("delete")} />}
         </div>}
         <div className="card-footer-second-line" onClick={handleClick}>
           {!visible && <button className=" btn-footer" ><i class="fa-solid fa-angle-down"></i></button>}
@@ -93,7 +95,7 @@ function Card({ id, title, badge, price, location, listFonction, type, onDelete 
         </div>
 
       </div>
-      <Modal title="Modifier un logement" isOpen={showModal} children={<PropertiesForms userId={user?._id} propertyId={id} onclose={() => setShowModal(false)} />} onClose={() => setShowModal(false)} />
+      <Modal title={t("edit_property")} isOpen={showModal} children={<PropertiesForms userId={user?._id} propertyId={id} onclose={() => setShowModal(false)} />} onClose={() => setShowModal(false)} />
     </div>
   )
 }

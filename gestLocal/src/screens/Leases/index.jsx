@@ -7,8 +7,10 @@ import { useLocation } from 'react-router-dom';
 import { useAuth } from '../../auth/AuthProvider';
 import LeasesForms from '../../components/LeasesForms';
 import Modal from '../../components/Modal';
+import { useTranslation } from "react-i18next";
 
 function Leases() {
+    const { t } = useTranslation("common");
     const [leases, setLeases] = useState([])
     const [showModal, setShowModal] = useState(false);
     const { user } = useAuth()
@@ -35,8 +37,8 @@ function Leases() {
     return (
         <LayoutSecondForm>
             {leases && <CardList formData={leases} onToggle={handleAddLease} type="leases" />}
-            <Modal title="Ajouter un locataire" isOpen={showModal} children={<LeasesForms userId={user?._id} onclose={() => setShowModal(false)} />} onClose={() => setShowModal(false)} />
-            <Table type="leases" data={leases} title="Mes locataires" onToggle={handleAddLease} />
+            <Modal title={t('add_lease')} isOpen={showModal} children={<LeasesForms userId={user?._id} onclose={() => setShowModal(false)} />} onClose={() => setShowModal(false)} />
+            <Table type="leases" data={leases} title={t('leases')} onToggle={handleAddLease} />
         </LayoutSecondForm>
     )
 }
