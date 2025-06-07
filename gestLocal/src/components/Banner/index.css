@@ -71,50 +71,179 @@
     position: relative;
 
 }
-@media (max-width: 768px) {
+
+@media (min-width: 769px) and (max-width: 1024px) {
     .banner-image .img-2 {
-        width: 150px;
-        height: 150px;
-        top: -10px;
-        left: 20px;
+        width: 170px;
+        height: 170px;
+        z-index: 1000;
+        position: absolute;
+        top: 5px;
+        left: 0;
     }
+
     .banner-image .img-pocket {
-        width: 150px;
-        height: 150px;
+        width: 250px;
+        height: 250px;
+        z-index: 1000;
+        position: absolute;
+        top: 0px;
+        left: 80%;
+        transform: rotate(50deg) translateX(-50%);
+    }
+
+    .banner-image .img-tobo {
+        width: 80px;
+        height: 80px;
+        z-index: 1000;
+        position: absolute;
+        top: 90%;
+        left: 95%;
+        transform: rotate(50deg) translateX(-50%);
+    }
+
+    .banner-image .img-tobo-second {
+        width: 40px;
+        height: 40px;
+        z-index: 1000;
+        position: absolute;
+        top: 10%;
+        left: 95%;
+        transform: rotate(50deg) translateX(-50%);
+    }
+
+    .banner-image .img-tobo {
+        width: 80px;
+        height: 80px;
+        z-index: 1000;
+        position: absolute;
+        top: 90%;
+        left: 95%;
+        transform: rotate(50deg) translateX(-50%);
+    }
+
+    .banner-image .img-tobonne {
+        width: 70px;
+        height: 70px;
+        z-index: 1000;
+        position: absolute;
+        top: -10%;
+        left: 1%;
+    }
+
+    .banner {
+        box-shadow: .5rem .5rem 1rem var(--shadow-color);
+        text-align: match-parent;
+        align-items: center;
+        border-radius: 20px;
+        margin-top: 5%;
+        width: 100%;
+        padding: 2%;
+        background-color: var(--primary);
+        background-image: radial-gradient(circle at top left, #a0b910 0%, #a8b91080 20%, transparent 20%),
+            radial-gradient(circle at bottom right, #10B981 0%, #10B98180 30%, transparent 30%);
+        color: var(--text-color-white);
+        position: relative;
+        font-size: 0.7rem;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .banner-image .img-2 {
+        width: 100px;
+        height: 100px;
+        top: 0px;
+        left: 30px;
+    }
+
+    .banner-image .img-pocket {
+        width: 100px;
+        height: 100px;
         top: 0px;
         left: 80%;
     }
+
     .banner-image .img-tobo {
         width: 60px;
         height: 60px;
         top: 90%;
         left: 95%;
     }
+
     .banner-image .img-tobo-second {
         width: 30px;
         height: 30px;
         top: 10%;
         left: 95%;
     }
+
     .banner-image .img-tobonne {
         width: 50px;
         height: 50px;
         top: -5%;
         left: 1%;
     }
-        .banner {
-            box-shadow: .5rem .5rem 1rem var(--shadow-color);
-            align-items: center;
-            border-radius: 20px;
-            margin-top: 5%;
 
-            padding: 2%;
-            background-color: var(--primary);
-            background-image: radial-gradient(circle at top left, #a0b910 0%, #a8b91080 20%, transparent 20%),
-                radial-gradient(circle at bottom right, #10B981 0%, #10B98180 30%, transparent 30%);
-            color: var(--text-color-white);
-            position: relative;
-            font-size: 0.5rem;   }
-    
+    .banner {
+        box-shadow: .5rem .5rem 1rem var(--shadow-color);
+        align-items: center;
+        border-radius: 20px;
+        margin-top: 5%;
+
+        padding: 2%;
+        background-color: var(--primary);
+        background-image: radial-gradient(circle at top left, #a0b910 0%, #a8b91080 20%, transparent 20%),
+            radial-gradient(circle at bottom right, #10B981 0%, #10B98180 30%, transparent 30%);
+        color: var(--text-color-white);
+        position: relative;
+        font-size: 0.5rem;
+    }
+
 }
 
+@media (max-width: 480px) {
+    .banner-image .img-2 {
+        display: none;
+    }
+
+    .banner-image .img-pocket {
+        display: none;
+    }
+
+    .banner-image .img-tobo {
+        width: 30px;
+        height: 30px;
+        top: 80%;
+        left: 5%;
+    }
+
+    .banner-image .img-tobo-second {
+        width: 30px;
+        height: 30px;
+        top: 10%;
+        left: 95%;
+    }
+
+    .banner-image .img-tobonne {
+        width: 50px;
+        height: 50px;
+        top: -5%;
+        left: 1%;
+    }
+
+    .banner {
+        box-shadow: .5rem .5rem 1rem var(--shadow-color);
+        align-items: center;
+        border-radius: 20px;
+        margin-top: 5%;
+
+        padding: 2%;
+        background-color: var(--primary);
+        background-image: radial-gradient(circle at top left, #a0b910 0%, #a8b91080 20%, transparent 20%),
+            radial-gradient(circle at bottom right, #10B981 0%, #10B98180 30%, transparent 30%);
+        color: var(--text-color-white);
+        position: relative;
+        font-size: 0.5rem;
+    }
+
+}

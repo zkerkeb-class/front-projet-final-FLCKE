@@ -8,6 +8,8 @@ import Register from "../screens/RegisterPage";
 import React from "react";
 import { useAuth } from "../auth/AuthProvider";
 import Login from "../screens/loginPage";
+import DashboardTenant from "../screens/DashboardTenant";
+import Rent from "../screens/Rent";
 
 
 const AppRoutes = () => (
@@ -17,8 +19,24 @@ const AppRoutes = () => (
         <Route
             path="/dashboard-pro"
             element={
-                <ProtectedRoute>
+                <ProtectedRoute allowedRoles={["proprietaire"]}>
                     <Dashboard />
+                </ProtectedRoute>
+            }
+        />
+        <Route
+            path="/dashboard-tenant"
+            element={
+                <ProtectedRoute allowedRoles={["locataire"]}>
+                    <DashboardTenant />
+                </ProtectedRoute>
+            }
+        />
+        <Route
+            path="/payement-tenant"
+            element={
+                <ProtectedRoute allowedRoles={["locataire"]}>
+                    <Rent />
                 </ProtectedRoute>
             }
         />
@@ -26,7 +44,7 @@ const AppRoutes = () => (
         <Route
             path="/properties"
             element={
-                <ProtectedRoute>
+                <ProtectedRoute allowedRoles={["proprietaire"]}>
                     <Properties />
                 </ProtectedRoute>
             }
@@ -35,7 +53,7 @@ const AppRoutes = () => (
         <Route
             path="/leases"
             element={
-                <ProtectedRoute>
+                <ProtectedRoute allowedRoles={["proprietaire","locataire"]}>
                     <Leases />
                 </ProtectedRoute>
             }

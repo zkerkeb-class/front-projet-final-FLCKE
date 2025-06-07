@@ -1,20 +1,22 @@
 import React from 'react'
 import './index.css'
-function CardResume() {
+import { Link } from 'react-router-dom'
+function CardResume({ dataType, data, text, link, icon, type }) {
     return (
-       
-            <div className="card-resume-container">
-                <div className="card-resume">
-                    <div>
-                        <h2>Résumé</h2>
-                        <p>Ce projet est une application de gestion de tâches et de notes, permettant aux utilisateurs de créer, modifier et supprimer des tâches, ainsi que de prendre des notes.</p>
-                    </div>
-                    <img src="https://via.placeholder.com/150" alt="Project Thumbnail" className="project-thumbnail" />
+
+        <div className="card-resume-container" data-type={dataType}>
+            <div className="card-resume">
+                <div className='card-resume-display-data'>
+                    <h2 className='card-resume-number'>{data}</h2>
+                    {type === "rent" ? (<p>Rent : {text}</p>) : (<p>{text}</p>)}
                 </div>
-                <div className="card-resume-footer">
-                    <a href="" className="card-resume-link">En savoir plus</a>
-                </div>
+                <i class={`fa-solid ${icon} icon-dashboard`}></i>
             </div>
+            {type != "rent" &&
+                <div className="card-resume-footer">
+                    <Link to={link} className='card-resume-link'>En savoir plus</Link>
+                </div>}
+        </div>
     )
 }
 

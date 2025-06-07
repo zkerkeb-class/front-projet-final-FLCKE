@@ -38,6 +38,9 @@
     }
     
 }
+.title{
+    color: var(--text-color);
+}
 .modal-overlay {
     position: fixed;
     top: 0;

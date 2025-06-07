@@ -17,6 +17,10 @@ export async function getLeaseById(id) {
     const response = await axiosInstance.get(`/leases/${id}`);
     return response.data;
 }
+export async function getLeaseByTenant(id) {
+    const response = await axiosInstance.get(`/leases/getAll/${id}`);
+    return response.data;
+}
 export async function deleteLease(id) {
     const response = await axiosInstance.delete(`/leases/${id}`);
     return response.data;

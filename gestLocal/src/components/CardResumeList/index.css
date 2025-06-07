@@ -1,10 +1,39 @@
-.card-resume-list{
+.card-resume-list {
     display: flex;
     flex-direction: row;
-    justify-content: center; 
+    justify-content: center;
     gap: 10%;
 
 }
-.card-resume-list-container h1{
+
+.card-resume-list-container h1 {
     text-align: left;
+    color: var(--text-color);
+}
+
+@media (max-width:480px) {
+    .card-resume-list {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .card-resume-list-container h1 {
+        text-align: left;
+        color: var(--text-color);
+        font-size: 1.7rem;
+    }
+
+}
+@media (min-width:481px) and (max-width:768px) {
+    .card-resume-list {
+        gap: 5%;
+    }
+
+    .card-resume-list-container h1 {
+        text-align: left;
+        color: var(--text-color);
+        font-size: 1.7rem;
+    }
+
 }

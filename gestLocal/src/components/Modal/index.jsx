@@ -7,7 +7,7 @@ function Modal({ isOpen, onClose, title, children  }) {
                 <div className="modal-overlay">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h2>{title}</h2>
+                            <h2 className='title'>{title}</h2>
                             <button className="close-button" onClick={onClose}>
                                 <i className="fa-solid fa-xmark"></i>
                             </button>

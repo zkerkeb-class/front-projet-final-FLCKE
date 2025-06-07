@@ -9,7 +9,7 @@ import { useAuth } from '../../auth/AuthProvider'
 import { useTranslation } from "react-i18next";
 
 function FormsAuth({ type }) {
-    const {t} = useTranslation("common");
+    const { t } = useTranslation("common");
     const [isLogin, setIsLogin] = useState(type === 'login')
     const [formData, setFormData] = useState({
         fullName: '',
@@ -39,7 +39,13 @@ function FormsAuth({ type }) {
                 .then((response) => {
                     console.log('Login successful:', response)
                     loginContext(response?.user, response?.token)
-                    Navigate('/dashboard-pro')
+                    if (response.user.role === "locataire") {
+
+                        Navigate('/dashboard-tenant')
+                    } else if (response.user.role === "proprietaire") {
+
+                        Navigate('/dashboard-pro')
+                    }
                 })
                 .catch((error) => {
                     console.error('Login error:', error)
@@ -71,10 +77,10 @@ function FormsAuth({ type }) {
                     {isLogin ? (
                         <p>{t("no_account")} <Link to={"/register"}>{t("register_cta")}</Link></p>
                     ) : (
-                            <p>{t("already_account")} <Link to={"/login"}>{t("login_cta")}</Link></p>
+                        <p>{t("already_account")} <Link to={"/login"}>{t("login_cta")}</Link></p>
                     )}
                 </div>
-                <BtnPrimary type="submit" text={!isLogin ? t("submit")  :t("login")} />
+                <BtnPrimary type="submit" text={!isLogin ? t("submit") : t("login")} />
             </form>
 
         </div>

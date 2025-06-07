@@ -1,7 +1,7 @@
 import React, { use, useEffect, useState } from 'react'
 import LayoutSecondForm from '../../LayoutSecondForm'
 import CardList from '../../components/cardList'
-import { getMyLeases } from '../../services/leasesServices';
+import { getLeaseByTenant, getMyLeases } from '../../services/leasesServices';
 import Table from '../../components/Table';
 import { useLocation } from 'react-router-dom';
 import { useAuth } from '../../auth/AuthProvider';
@@ -17,14 +17,24 @@ function Leases() {
     const location = useLocation();
     const refresh = location.state?.refresh; // Check if refresh state is passed
     useEffect(() => {
-        getMyLeases(user?._id)
-            .then((result) => {
-                console.log("ffer",result)
-                setLeases(result)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
+        if (user.role === "locataire") {
+            getLeaseByTenant(user?._id)
+                .then((result) => {
+                    setLeases(result)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        } else if (user.role === "proprietaire") {
+            getMyLeases(user?._id)
+                .then((result) => {
+                    setLeases(result)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        }
+
         if (refresh) {
             setShowModal(false);
         }

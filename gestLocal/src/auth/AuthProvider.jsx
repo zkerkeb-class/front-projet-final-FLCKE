@@ -5,6 +5,7 @@ export default function AuthProvider({ children }) {
 
     const loginContext = (userData, token) => {
         localStorage.setItem('token', token);
+        localStorage.setItem('role', userData.role);
         setUser(userData);
     };
 

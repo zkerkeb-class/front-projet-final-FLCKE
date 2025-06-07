@@ -1,0 +1,15 @@
+.rent-list {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    gap: 5%;
+
+}
+.rent-list-container{
+    text-align: left;
+
+}
+.rent-list-container h1 {
+    text-align: left;
+    color: var(--text-color);
+}

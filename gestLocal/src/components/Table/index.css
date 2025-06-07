@@ -29,7 +29,6 @@
 
     .title {
         text-align: left;
-        margin-left: 10%;
     }
 
     .table-title-header {
@@ -38,7 +37,6 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        padding-left: 10%;
     }
 
     .table-title-header p {
@@ -85,7 +83,6 @@
 
     .title {
         text-align: left;
-        margin-left: 10%;
     }
 
     .table-title-header {
@@ -94,7 +91,6 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        padding-left: 10%;
     }
 
     .table-title-header p {

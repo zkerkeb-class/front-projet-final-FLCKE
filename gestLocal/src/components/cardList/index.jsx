@@ -24,7 +24,7 @@ function CardList({ formData, type, onToggle }) {
         <div className='card-list'>
             <div className='card-list-header'>
                 <p className='card-list-title'>{t("properties")} </p>
-               
+
                 <BtnPrimary text={t('add_btn')} type="button" onClick={() => onToggle()} />
             </div>
 
@@ -32,17 +32,17 @@ function CardList({ formData, type, onToggle }) {
                 <Card
                     key={index}
                     id={item._id}
-                    title={item.name || item.tenant_id?.fullName}
+                    title={item.name || item.tenant_id?.fullName || item.user?.fullName}
                     badge={item.status}
-                    price={item.rent_price || format(item.end_date, 'dd/MM/yyyy') }
-                    location={item.address || item.property_id?.name}
+                    price={item.rent_price || item.end_date && format(item.end_date, 'dd/MM/yyyy') || item.date && format(item.date, 'dd/MM/yyyy')}
+                    location={item.address || item.property_id?.name || item.property?.name}
                     onDelete={handleDelete}
                     type={type}
                 /*
                 listFonction={item.listFonction}*/
                 />
             )) : <p className='card-list-empty'>Aucun logement trouvé</p>}
-            
+
 
         </div>
     )
