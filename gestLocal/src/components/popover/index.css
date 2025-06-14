@@ -74,8 +74,14 @@
         right: 10px;
         z-index: 1000;
     }
-
+    .theme-toggles{
+        background:none;
+        
+    }
 }
 @media (min-width: 481px) {
-    
+    .theme-toggles{
+        display:none;
+
+    }
 }

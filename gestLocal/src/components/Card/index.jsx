@@ -84,10 +84,10 @@ function Card({ id, title, badge, price, location, type, onDelete }) {
       </div>
       <div className="card-footer">
         {visible && <div className="card-footer-first-line">
-          {btn1 && user.role === "propiétaire" && <BtnPrimary text={t("suspend_btn")} className="Btn-action" onClick={() => handleBtnClick("suspend")} />}
+          {btn1 && user.role === "proprietaire" && <BtnPrimary text={t("suspend_btn")} className="Btn-action" onClick={() => handleBtnClick("suspend")} />}
           {btn1 && <BtnPrimary text={t("download_btn")} className="Btn-action" onClick={() => handleBtnClick("download")} />}
-          {!btn1 && user.role === "propiétaire" && <BtnPrimary text={t("edit_btn")} className="Btn-action" onClick={() => handleBtnClick("edit")} />}
-          {!btn1 && user.role === "propiétaire" && <BtnPrimary text={t("delete_btn")} className="Btn-action" onClick={() => handleBtnClick("delete")} />}
+          {!btn1 && user.role === "proprietaire" && <BtnPrimary text={t("edit_btn")} className="Btn-action" onClick={() => handleBtnClick("edit")} />}
+          {!btn1 && user.role === "proprietaire" && <BtnPrimary text={t("delete_btn")} className="Btn-action" onClick={() => handleBtnClick("delete")} />}
           {user.role === "locataire" && badge === "completed" && btn1 && <BtnPrimary text={t("download_btn")} className="Btn-action" onClick={() => handleBtnClick("download", dataInstance?._id)} />}
           {user.role === "locataire" && badge != "completed" && !btn1 && <BtnPrimary text="payer" className="Btn-action" onClick="" />}
         </div>}

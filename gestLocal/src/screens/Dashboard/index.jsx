@@ -8,14 +8,12 @@ import Banner from '../../components/Banner'
 import './index.css'
 import CardResume from '../../components/CardResume'
 import CardResumeList from '../../components/CardResumeList'
-import { Link } from 'react-router-dom'
 function Dashbord() {
 
   return (
     <LayoutSecondForm>
       <Banner className="the-banner" />
       <CardResumeList />
-      <Link to="/dashboard-tenant" > tenant</Link>
     </LayoutSecondForm>
   )
 }

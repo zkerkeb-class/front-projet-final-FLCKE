@@ -1,0 +1,16 @@
+.profil-img-container {
+    box-shadow: .2rem .2rem 2rem var(--shadow-color);
+    border-radius: 10px;
+    padding: 5%;
+    order: -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.profil-img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50px;
+}

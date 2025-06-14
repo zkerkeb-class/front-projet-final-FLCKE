@@ -129,7 +129,7 @@ function Table({ data, title, type, onToggle }) {
         <div className='table-container'>
             <div className='table-title-header'>
                 <p className='table-title'>{title}</p>
-                {user.role === "propeiétaire" && <BtnPrimary className='btn-add' text={t('add_btn')} onClick={() => onToggle()} ></BtnPrimary>}
+                {user.role === "proprietaire" && type!="payement" && <BtnPrimary className='btn-add' text={t('add_btn')} onClick={() => onToggle()} ></BtnPrimary>}
             </div>
             <table className='table'>
                 <thead className='table-header'>
@@ -149,10 +149,10 @@ function Table({ data, title, type, onToggle }) {
                                 <Badge text={dataInstance?.status} />
                             </td>
                             <td className='column-data-btn'>
-                                {btn1 && user.role === "propiétaire" && <BtnPrimary text={t("suspend_btn")} className="Btn-action" onClick={() => handleBtnClick("suspend", dataInstance?._id)} />}
+                                {btn1 && user.role === "proprietaire" && <BtnPrimary text={t("suspend_btn")} className="Btn-action" onClick={() => handleBtnClick("suspend", dataInstance?._id)} />}
                                 {btn1 && <BtnPrimary text={t("download_btn")} className="Btn-action" onClick={() => handleBtnClick("download", dataInstance?._id)} />}
-                                {!btn1 && user.role === "propiétaire" && <BtnPrimary text={t("edit_btn")} className="Btn-action" onClick={() => handleBtnClick("edit", dataInstance?._id)} />}
-                                {!btn1 && user.role === "propiétaire" && <BtnPrimary text={t("delete_btn")} className="Btn-action" onClick={() => handleBtnClick("delete", dataInstance?._id)} />}
+                                {!btn1 && user.role === "proprietaire" && type!="payement" &&<BtnPrimary text={t("edit_btn")} className="Btn-action" onClick={() => handleBtnClick("edit", dataInstance?._id)} />}
+                                {!btn1 && user.role === "proprietaire" && type != "payement" &&<BtnPrimary text={t("delete_btn")} className="Btn-action" onClick={() => handleBtnClick("delete", dataInstance?._id)} />}
                                 {user.role === "locataire" && dataInstance?.status === "completed" && btn1 && <BtnPrimary text={t("download_btn")} className="Btn-action" onClick={() => handleBtnClick("download", dataInstance?._id)} />}
                                 {user.role === "locataire" && dataInstance?.status != "completed" && !btn1 && <BtnPrimary text="payer" className="Btn-action" onClick="" />}
 

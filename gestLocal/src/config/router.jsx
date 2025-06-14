@@ -10,6 +10,7 @@ import { useAuth } from "../auth/AuthProvider";
 import Login from "../screens/loginPage";
 import DashboardTenant from "../screens/DashboardTenant";
 import Rent from "../screens/Rent";
+import Profil from "../screens/Profil";
 
 
 const AppRoutes = () => (
@@ -35,7 +36,7 @@ const AppRoutes = () => (
         <Route
             path="/payement-tenant"
             element={
-                <ProtectedRoute allowedRoles={["locataire"]}>
+                <ProtectedRoute allowedRoles={["locataire","proprietaire"]}>
                     <Rent />
                 </ProtectedRoute>
             }
@@ -55,6 +56,14 @@ const AppRoutes = () => (
             element={
                 <ProtectedRoute allowedRoles={["proprietaire","locataire"]}>
                     <Leases />
+                </ProtectedRoute>
+            }
+        />
+        <Route
+            path="/profil"
+            element={
+                <ProtectedRoute allowedRoles={["proprietaire","locataire"]}>
+                    <Profil />
                 </ProtectedRoute>
             }
         />

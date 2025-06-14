@@ -9,6 +9,7 @@ function LayoutSecondForm({ children }) {
    
     return (
         <div className="layout-page">
+            <div className="background-fixed" />
             <Navbar className="navBar" />
             <div className='layout-content'>
                 {children}

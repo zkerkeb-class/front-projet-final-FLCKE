@@ -37,7 +37,12 @@ function Navbar() {
                         </li>
                         <li className="navbar-item">
                             {role === "proprietaire" && <Link to={"/properties"}><i class="fa-solid fa-building-user"></i> <span className='text-on-off'>{t("properties")} </span></Link>}
-                            {role === "locataire" && <Link to={"/payement-tenant"}><i class="fa-solid fa-building-user"></i> <span className='text-on-off'>{t("properties")} </span></Link>}
+                        </li>
+                        <li className="navbar-item">
+                            <Link to={"/payement-tenant"}><i class="fa-solid fa-building-user"></i> <span className='text-on-off'>Paiements </span></Link>
+                        </li>
+                        <li className="navbar-item">
+                            <Link to={"/profil"}><i class="fa-solid fa-building-user"></i> <span className='text-on-off'>Profil </span></Link>
                         </li>
                     </ul>
                 </div>

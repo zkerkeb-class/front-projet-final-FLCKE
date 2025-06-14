@@ -13,3 +13,29 @@
     text-align: left;
     color: var(--text-color);
 }
+@media (max-width:480px) {
+    .rent-list {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .rent-list-container h1 {
+        text-align: left;
+        color: var(--text-color);
+        font-size: 1.7rem;
+    }
+
+}
+@media (min-width:481px) and (max-width:768px) {
+    .rent-list {
+        gap: 5%;
+    }
+
+    .rent-list-container h1 {
+        text-align: left;
+        color: var(--text-color);
+        font-size: 1.7rem;
+    }
+
+}

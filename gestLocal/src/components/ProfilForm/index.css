@@ -1,0 +1,23 @@
+.label-profil-form {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+
+}
+
+.password-link-changer {
+    text-align: end;
+}
+
+.form-profil {
+    width: 90%;
+    box-shadow: .2rem .2rem 2rem var(--shadow-color);
+    padding-inline: 5%;
+    border-radius: 10px;
+}
+
+.btn-Bottom {
+    display: flex;
+    justify-content: space-evenly;
+    margin-block: 3%;
+}

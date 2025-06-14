@@ -22,7 +22,7 @@ function PopOver({ btnText, content }) {
                 <div className="popover" ref={popoverRef}>
                     <button className="popover-button-close" onClick={() => { togglePopover() }}><i className="fa-solid fa-xmark"></i></button>
                     <div className='theme-btn' >
-                        <button onClick={() => toggleTheme()} className="navbar-theme-toggle">
+                        <button onClick={() => toggleTheme()} className="theme-toggles">
                             {theme === lightTheme && <i className="fa-solid fa-sun"></i>}
                             {theme === darkTheme && <i className="fa-solid fa-moon"></i>}
                         </button>

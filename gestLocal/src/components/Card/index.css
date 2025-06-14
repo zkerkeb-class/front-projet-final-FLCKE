@@ -56,12 +56,12 @@
     .card-footer-first-line {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         width: 100%;
         margin-block: 5%;
     }
-
+   
     .btn-footer {
         width: 100%;
         height: 100%;

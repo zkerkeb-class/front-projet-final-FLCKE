@@ -1,0 +1,20 @@
+@media (min-width:481px) {
+    .profil-data {
+        display: flex;
+        flex-direction: row;
+        gap: 5%;
+        background: var(--background-color);
+        margin: auto;
+    }
+}
+
+@media (max-width:768px) {
+    .profil-data {
+        display: flex;
+        flex-direction: column;
+        background: var(--background-color);
+        margin: auto;
+        row-gap: 10px;
+        
+    }
+}

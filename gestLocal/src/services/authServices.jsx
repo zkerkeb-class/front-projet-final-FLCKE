@@ -9,4 +9,9 @@ export async function registerService(data) {
     console.log('response', response)
     return response.data;
 }
+export async function updateUser(id, data) {
+    const response = await axiosInstance.put(`/user/${id}`, data);
+    console.log('response', response)
+    return response.data;
+}
 
