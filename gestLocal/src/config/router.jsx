@@ -11,6 +11,7 @@ import Login from "../screens/loginPage";
 import DashboardTenant from "../screens/DashboardTenant";
 import Rent from "../screens/Rent";
 import Profil from "../screens/Profil";
+import PasswordChanger from "../screens/PasswordChanger";
 
 
 const AppRoutes = () => (
@@ -36,7 +37,7 @@ const AppRoutes = () => (
         <Route
             path="/payement-tenant"
             element={
-                <ProtectedRoute allowedRoles={["locataire","proprietaire"]}>
+                <ProtectedRoute allowedRoles={["locataire", "proprietaire"]}>
                     <Rent />
                 </ProtectedRoute>
             }
@@ -54,7 +55,7 @@ const AppRoutes = () => (
         <Route
             path="/leases"
             element={
-                <ProtectedRoute allowedRoles={["proprietaire","locataire"]}>
+                <ProtectedRoute allowedRoles={["proprietaire", "locataire"]}>
                     <Leases />
                 </ProtectedRoute>
             }
@@ -62,12 +63,13 @@ const AppRoutes = () => (
         <Route
             path="/profil"
             element={
-                <ProtectedRoute allowedRoles={["proprietaire","locataire"]}>
+                <ProtectedRoute allowedRoles={["proprietaire", "locataire"]}>
                     <Profil />
                 </ProtectedRoute>
             }
         />
 
+        <Route path="/reset-password/:token" element={<PasswordChanger />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
     </Routes>

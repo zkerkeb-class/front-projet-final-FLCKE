@@ -1,0 +1,15 @@
+@media (min-width: 481px) {
+    .register-link {
+        display: none;
+    }
+
+    .form-container {
+        padding: 5%;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .register-link {
+        display: block;
+    }}

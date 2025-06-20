@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import BtnSecondary from '../ButtonSecondary';
 import BtnPrimary from '../ButtonPrimary';
 import { useState } from 'react';
-import { updateUser } from '../../services/authServices';
+import { sendPasswordMail, updateUser } from '../../services/authServices';
 import { useEffect } from 'react';
 import "./index.css";
 function ProfilForm() {
@@ -43,6 +43,12 @@ function ProfilForm() {
                 alert("Echec")
             })
     }
+    const handleChangePassword = (e) => {
+        e.preventDefault()
+        sendPasswordMail(user?.email).then((result) => {
+            alert(result.message)
+        })
+    }
     return (
         <form onChange={(e) => handleChange(e)} onSubmit={(e) => handleSubmit(e)} className='form-profil'>
             <label className='label-profil-form'>
@@ -56,7 +62,8 @@ function ProfilForm() {
             <label className='label-profil-form'>
                 <h4>{t("password")}</h4>
                 <Input type="password" defaultValue="xxxxxxxxxxx" placeholder={t("password")} />
-                <Link to="/" className='password-link-changer'>Changer</Link>
+
+                <Link to="/" className='password-link-changer ' onClick={(e) => handleChangePassword(e)}>Changer</Link>
             </label>
             <label className='label-profil-form' >
                 <h4>{t("phone")}</h4>

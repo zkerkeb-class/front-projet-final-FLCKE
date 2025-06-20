@@ -14,4 +14,14 @@ export async function updateUser(id, data) {
     console.log('response', response)
     return response.data;
 }
+export async function sendPasswordMail(email) {
+    const response = await axiosInstance.post(`/auth/request-password-reset`, { email });
+    console.log('response', response)
+    return response.data;
+}
+export async function passwordChanger(data) {
+    const response = await axiosInstance.post(`/auth/reset-password`, data);
+    console.log('response', response)
+    return response.data;
+}
 
