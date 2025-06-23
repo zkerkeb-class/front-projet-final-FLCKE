@@ -31,7 +31,7 @@ function LeasesForms({ userId, onclose }) {
                     setListProperties([{ label: t('select_property'), value: "" }, ...formatted]);
                 })
                 .catch((error) => {
-                    console.error('Error fetching properties:', error);
+                    alert("😵", error);
                 });
         }
         const dates = []
@@ -50,16 +50,16 @@ function LeasesForms({ userId, onclose }) {
         console.log('Form submitted:', formData);
         createLease(formData)
             .then((response) => {
+                alert('✅ Tenant added successfully');
                 navigate('/leases', { state: { refresh: Date.now() } });
             })
             .catch((error) => {
-                console.error('Error creating lease:', error);
+                alert("😵", error);
             });
         // Here you would typically send the data to your backend
     }
     const handleChange = (e) => {
         const { name, value } = e.target;
-        console.log('Input changed:', name, value);
         setFormData({
             ...formData,
             [name]: value

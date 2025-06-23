@@ -12,11 +12,12 @@ import DashboardTenant from "../screens/DashboardTenant";
 import Rent from "../screens/Rent";
 import Profil from "../screens/Profil";
 import PasswordChanger from "../screens/PasswordChanger";
+import Home from "../screens/home";
 
 
 const AppRoutes = () => (
     <Routes>
-        <Route path="/" element={<h1>Page d'accueil</h1>} />
+        <Route path="/" element={<Home />} />
 
         <Route
             path="/dashboard-pro"
@@ -70,6 +71,7 @@ const AppRoutes = () => (
         />
 
         <Route path="/reset-password/:token" element={<PasswordChanger />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
     </Routes>

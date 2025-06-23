@@ -1,7 +1,10 @@
 import React from 'react'
 import './index.css'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 function CardResume({ dataType, data, text, link, icon, type }) {
+    const {t}=useTranslation("common");
+   
     return (
 
         <div className="card-resume-container" data-type={dataType}>
@@ -14,7 +17,7 @@ function CardResume({ dataType, data, text, link, icon, type }) {
             </div>
             {type != "rent" &&
                 <div className="card-resume-footer">
-                    <Link to={link} className='card-resume-link'>En savoir plus</Link>
+                    <Link to={link} className='card-resume-link'>{t("view_more")} </Link>
                 </div>}
         </div>
     )

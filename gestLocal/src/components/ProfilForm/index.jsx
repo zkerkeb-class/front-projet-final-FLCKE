@@ -34,13 +34,12 @@ function ProfilForm() {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
         updateUser(user._id, formData)
             .then(() => {
-                alert("reussite");
+                alert("User profil Update");
             }
-            ).catch(() => {
-                alert("Echec")
+            ).catch((error) => {
+                alert("😵", error)
             })
     }
     const handleChangePassword = (e) => {
@@ -63,15 +62,15 @@ function ProfilForm() {
                 <h4>{t("password")}</h4>
                 <Input type="password" defaultValue="xxxxxxxxxxx" placeholder={t("password")} />
 
-                <Link to="/" className='password-link-changer ' onClick={(e) => handleChangePassword(e)}>Changer</Link>
+                <Link to="/" className='password-link-changer ' onClick={(e) => handleChangePassword(e)}>{t("edit_btn")}</Link>
             </label>
             <label className='label-profil-form' >
                 <h4>{t("phone")}</h4>
                 <Input type="tel" name="phone" defaultValue={user?.phone} placeholder={t("phone")} />
             </label>
             <div className='btn-Bottom'>
-                <BtnSecondary text="Annuler" />
-                <BtnPrimary text="Soumettre" type="btn" />
+                <BtnSecondary text={t('cancel')} />
+                <BtnPrimary text={t('submit')} type="btn" />
             </div>
         </form>
     )

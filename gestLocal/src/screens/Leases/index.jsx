@@ -8,19 +8,23 @@ import { useAuth } from '../../auth/AuthProvider';
 import LeasesForms from '../../components/LeasesForms';
 import Modal from '../../components/Modal';
 import { useTranslation } from "react-i18next";
+import Spinner from '../../components/Spinner';
 
 function Leases() {
     const { t } = useTranslation("common");
+    const [loading, setLoading] = useState(false)
     const [leases, setLeases] = useState([])
     const [showModal, setShowModal] = useState(false);
     const { user } = useAuth()
     const location = useLocation();
     const refresh = location.state?.refresh; // Check if refresh state is passed
     useEffect(() => {
+        setLoading(true)
         if (user.role === "locataire") {
             getLeaseByTenant(user?._id)
                 .then((result) => {
                     setLeases(result)
+                    setLoading(false)
                 })
                 .catch((err) => {
                     console.log(err)
@@ -29,6 +33,7 @@ function Leases() {
             getMyLeases(user?._id)
                 .then((result) => {
                     setLeases(result)
+                    setLoading(false)
                 })
                 .catch((err) => {
                     console.log(err)
@@ -46,10 +51,16 @@ function Leases() {
 
     return (
         <LayoutSecondForm>
-            {leases && <CardList formData={leases} onToggle={handleAddLease} type="leases" />}
-            <Modal title={t('add_lease')} isOpen={showModal} children={<LeasesForms userId={user?._id} onclose={() => setShowModal(false)} />} onClose={() => setShowModal(false)} />
-            <Table type="leases" data={leases} title={t('leases')} onToggle={handleAddLease} />
-        </LayoutSecondForm>
+
+
+            {!loading ? (<>
+                <CardList formData={leases} onToggle={handleAddLease} type="leases" />
+                <Modal title={t('add_lease')} isOpen={showModal} children={<LeasesForms userId={user?._id} onclose={() => setShowModal(false)} />} onClose={() => setShowModal(false)} />
+                <Table type="leases" data={leases} title={t('leases')} onToggle={handleAddLease} /> </>
+            ) : (
+                <Spinner />)
+            }
+        </LayoutSecondForm >
     )
 }
 

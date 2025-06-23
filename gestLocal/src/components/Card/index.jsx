@@ -27,6 +27,9 @@ function Card({ id, title, badge, price, location, type, onDelete }) {
     } else if (type === "properties") {
       setBtn1(false);
 
+    } else if (type === "payement") {
+      setBtn1(false);
+
     }
   }, [type]);
 
@@ -34,39 +37,29 @@ function Card({ id, title, badge, price, location, type, onDelete }) {
     if (action === 'suspend') {
       suspendLease(id)
         .then(() => {
-          console.log('Property suspended successfully');
+          alert('✅ Property suspended successfully');
           navigate('/leases', { state: { refresh: Date.now() } });
         })
         .catch((error) => {
-          console.error('Error suspending property:', error);
+          alert("😵", error);
         });
-
-      // Logic to suspend the property
-      console.log('Property suspended');
     } else if (action === 'download') {
       downloadLease(id).then(() => {
-        console.log('Property details downloaded successfully');
+        alert('✅ Property details downloaded successfully');
       }).catch((error) => {
-        console.error('Error downloading property details:', error);
+        alert("😵", error);
       });
-
-      console.log('Property details downloaded');
     } else if (action === 'edit') {
       setShowModal(true);
-      // Logic to edit the property
-      console.log('Property edited');
     } else if (action === 'delete') {
-      // Logic to delete the property
-      console.log('Delete button clicked');
       deleteProperties(id)
         .then(() => {
-          console.log('Property deleted successfully');
-          onDelete?.(id); // Call the onDelete function passed as a prop
+          alert('✅ Property deleted successfully');
+          onDelete?.(id);
         })
         .catch((error) => {
-          console.error('Error deleting property:', error);
+          alert("😵", error);
         });
-      console.log('Property deleted');
     }
   }
   return (
@@ -84,11 +77,11 @@ function Card({ id, title, badge, price, location, type, onDelete }) {
       </div>
       <div className="card-footer">
         {visible && <div className="card-footer-first-line">
-          {btn1 && user.role === "proprietaire" && <BtnPrimary text={t("suspend_btn")} className="Btn-action" onClick={() => handleBtnClick("suspend")} />}
-          {btn1 && <BtnPrimary text={t("download_btn")} className="Btn-action" onClick={() => handleBtnClick("download")} />}
-          {!btn1 && user.role === "proprietaire" && <BtnPrimary text={t("edit_btn")} className="Btn-action" onClick={() => handleBtnClick("edit")} />}
-          {!btn1 && user.role === "proprietaire" && <BtnPrimary text={t("delete_btn")} className="Btn-action" onClick={() => handleBtnClick("delete")} />}
-          {user.role === "locataire" && badge === "completed" && btn1 && <BtnPrimary text={t("download_btn")} className="Btn-action" onClick={() => handleBtnClick("download", dataInstance?._id)} />}
+          {btn1 && user.role === "proprietaire" && badge!='suspendu' && <BtnPrimary text={t("suspend_btn")} className="Btn-action" onClick={() => handleBtnClick("suspend", id)} />}
+          {btn1 && <BtnPrimary text={t("download_btn")} className="Btn-action" onClick={() => handleBtnClick("download", id)} />}
+          {!btn1 && user.role === "proprietaire" && type != "payement" && <BtnPrimary text={t("edit_btn")} className="Btn-action" onClick={() => handleBtnClick("edit", id)} />}
+          {!btn1 && user.role === "proprietaire" && type != "payement" && <BtnPrimary text={t("delete_btn")} className="Btn-action" onClick={() => handleBtnClick("delete", id)} />}
+          {user.role === "locataire" && badge === "completed" && btn1 && <BtnPrimary text={t("download_btn")} className="Btn-action" onClick={() => handleBtnClick("download", id)} />}
           {user.role === "locataire" && badge != "completed" && !btn1 && <BtnPrimary text="payer" className="Btn-action" onClick="" />}
         </div>}
         <div className="card-footer-second-line" onClick={handleClick}>

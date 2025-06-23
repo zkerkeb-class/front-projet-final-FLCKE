@@ -10,9 +10,11 @@ import PropertiesForms from '../../components/PropertiesForms'
 import { useLocation } from 'react-router-dom'
 import Table from '../../components/Table'
 import { useTranslation } from "react-i18next";
+import Spinner from '../../components/Spinner'
 function Properties() {
     const { t } = useTranslation("common");
     const [properties, setProperties] = useState([])
+    const [loading, setLoading] = useState(false)
     const [showModal, setShowModal] = useState(false);
     const { user } = useAuth()
     const location = useLocation();
@@ -20,9 +22,11 @@ function Properties() {
 
 
     useEffect(() => {
+        setLoading(true)
         getMyProperties(user._id)
             .then((result) => {
                 setProperties(result)
+                setLoading(false)
             })
             .catch((err) => {
                 console.log(err)
@@ -37,9 +41,15 @@ function Properties() {
     }
     return (
         <LayoutSecondForm>
-            {properties && <CardList formData={properties} onToggle={handleAddProperty} type="properties" />}
-            <Modal title={t("add_property")} isOpen={showModal} children={<PropertiesForms userId={user?._id} onclose={() => setShowModal(false)} />} onClose={() => setShowModal(false)} />
-            <Table type="properties" data={properties} title={t('properties')} onToggle={handleAddProperty} />
+            {!loading ? (
+                <>
+                    <CardList formData={properties} onToggle={handleAddProperty} type="properties" />
+                    <Modal title={t("add_property")} isOpen={showModal} children={<PropertiesForms userId={user?._id} onclose={() => setShowModal(false)} />} onClose={() => setShowModal(false)} />
+                    <Table type="properties" data={properties} title={t('properties')} onToggle={handleAddProperty} />
+                </>
+            ) : (
+                <Spinner />
+            )}
         </LayoutSecondForm>
     )
 }

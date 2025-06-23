@@ -23,9 +23,11 @@ function CardList({ formData, type, onToggle }) {
     return (
         <div className='card-list'>
             <div className='card-list-header'>
-                <p className='card-list-title'>{t("properties")} </p>
+                {type === "properties" && <p className='card-list-title'>{t("properties") } </p>}
+                {type === "leases" && <p className='card-list-title'>{t("leases") } </p>}
+                {type === "payement" && <p className='card-list-title'>{t("payement") } </p>}
 
-                <BtnPrimary text={t('add_btn')} type="button" onClick={() => onToggle()} />
+                {type != "payement" && <BtnPrimary text={t('add_btn')} type="button" onClick={() => onToggle()} />}
             </div>
 
             {data ? data.map((item, index) => (
@@ -41,7 +43,7 @@ function CardList({ formData, type, onToggle }) {
                 /*
                 listFonction={item.listFonction}*/
                 />
-            )) : <p className='card-list-empty'>Aucun logement trouvé</p>}
+            )) : <p className='card-list-empty'> {t("empty")} </p>}
 
 
         </div>

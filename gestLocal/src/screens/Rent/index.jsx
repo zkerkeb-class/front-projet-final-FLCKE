@@ -6,14 +6,20 @@ import { useAuth } from '../../auth/AuthProvider';
 import CardList from '../../components/cardList';
 import Table from '../../components/Table';
 import LayoutSecondForm from '../../LayoutSecondForm';
+import { useTranslation } from 'react-i18next';
+import Spinner from '../../components/Spinner';
 function Rent() {
+    const { t } = useTranslation("common");
+    const [loading, setLoading] = useState(false)
     const [payements, setPayement] = useState([]);
     const { user } = useAuth();
     useEffect(() => {
+        setLoading(true)
         if (user.role === "locataire") {
             getUserPayements(user?._id).then(
                 (result) => {
                     setPayement(result);
+                    setLoading(false)
                 }
             ).catch((err) => {
                 console.log(err)
@@ -22,6 +28,7 @@ function Rent() {
             getOwnerPayements(user?._id).then(
                 (result) => {
                     setPayement(result);
+                    setLoading(false)
                 }
             ).catch((err) => {
                 console.log(err)
@@ -31,8 +38,12 @@ function Rent() {
     }, [user])
     return (
         <LayoutSecondForm>
-            {payements && <CardList formData={payements} type="payement" />}
-            <Table type="payement" data={payements} title="Payement" />
+            {!loading ? (<><CardList formData={payements} type="payement" />
+                <Table type="payement" data={payements} title={t("payement")} />
+            </>
+            ) : (
+                <Spinner />
+            )}
         </LayoutSecondForm>
     )
 }

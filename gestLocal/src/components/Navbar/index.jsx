@@ -31,7 +31,7 @@ function Navbar() {
                         </li>
                         <li className="navbar-item">
                             {role === "proprietaire" && <Link to={"/leases"}><i class="fa-solid fa-file-fragment"></i> <span className='text-on-off'>  {t("leases")} </span> </Link>}
-                            {role === "locataire" && <Link to={"/leases"}><i class="fa-solid fa-file-fragment"></i> <span className='text-on-off'>  contrat </span> </Link>}
+                            {role === "locataire" && <Link to={"/leases"}><i class="fa-solid fa-file-fragment"></i> <span className='text-on-off'>   {t("leases")}</span> </Link>}
 
 
                         </li>
@@ -39,10 +39,10 @@ function Navbar() {
                             {role === "proprietaire" && <Link to={"/properties"}><i class="fa-solid fa-building-user"></i> <span className='text-on-off'>{t("properties")} </span></Link>}
                         </li>
                         <li className="navbar-item">
-                            <Link to={"/payement-tenant"}><i class="fa-solid fa-building-user"></i> <span className='text-on-off'>Paiements </span></Link>
+                            <Link to={"/payement-tenant"}><i class="fa-solid fa-money-bills"></i><span className='text-on-off'>{t("payement")}</span></Link>
                         </li>
                         <li className="navbar-item">
-                            <Link to={"/profil"}><i class="fa-solid fa-building-user"></i> <span className='text-on-off'>Profil </span></Link>
+                            <Link to={"/profil"}><i class="fa-solid fa-user-tie"></i><span className='text-on-off'>{t("profil")}</span></Link>
                         </li>
                     </ul>
                 </div>
@@ -54,7 +54,9 @@ function Navbar() {
                 </div>
                 {!isLoggedIn && <div className="navbar-logout">
                     {/* <button className="navbar-button"><i class="fa-solid fa-arrow-right-from-bracket"></i> Quitter</button> */}
-                    <BtnSecondary text={t("logout")} type="button" onClick={() => { logoutContext() }} />
+                    <BtnSecondary text={<>
+                        <i className="fa-solid fa-right-from-bracket"></i>&nbsp;{t("logout")}
+                    </>} type="button" onClick={() => { logoutContext() }} />
                 </div>}
 
 

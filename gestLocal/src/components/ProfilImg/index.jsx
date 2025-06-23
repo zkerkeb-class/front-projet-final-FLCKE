@@ -19,18 +19,17 @@ function ProfilImg() {
   useEffect(() => {
     getPicture(user._id).then((result) => {
       setFile(result.imageUrl)
+    }).catch((error) => {
+      console.log(error);
     })
-      .catch((err) => {
-        console.log(err)
-      })
   }, [user])
   return (
     <div className='profil-img-container'>
       <div>
         < img src={file ? file : logo} className='profil-img' />
       </div>
-      <BtnPrimary text="Modifier l'image" onClick={() => { handleChange() }}></BtnPrimary>
-      <Modal title={t("add_property")} isOpen={showModal} children={<PictureUpload onSuccess={() => setShowModal(false)} />} onClose={() => setShowModal(false)} />
+      <BtnPrimary text={t("btn_modify_img")} onClick={() => { handleChange() }}></BtnPrimary>
+      <Modal title={t("btn_modify_img")} isOpen={showModal} children={<PictureUpload onSuccess={() => setShowModal(false)} />} onClose={() => setShowModal(false)} />
     </div>
   )
 }

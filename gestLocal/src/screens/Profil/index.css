@@ -8,13 +8,29 @@
     }
 }
 
-@media (max-width:768px) {
+@media(min-width:481px)and (max-width:768px) {
     .profil-data {
         display: flex;
         flex-direction: column;
         background: var(--background-color);
         margin: auto;
         row-gap: 10px;
-        
+        width: 100%;
     }
+
+    .profil_container {
+       margin-left: 10%;
+
+    }
+}
+@media (max-width:480px) {
+    .profil-data {
+        display: flex;
+        flex-direction: column;
+        background: var(--background-color);
+        margin: auto;
+        row-gap: 10px;
+        width: 100%;
+    }
+
 }

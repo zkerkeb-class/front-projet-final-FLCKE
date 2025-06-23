@@ -52,9 +52,6 @@ function Table({ data, title, type, onToggle }) {
             },
             {
                 "title": t("status")
-            },
-            {
-                "title": t("action")
             }])
             setBtn1(false);
         } else {
@@ -78,7 +75,6 @@ function Table({ data, title, type, onToggle }) {
 
         if (data) {
             setDataTable(data)
-            console.log(dataTable)
         }
 
     }, [type, data]);
@@ -86,42 +82,32 @@ function Table({ data, title, type, onToggle }) {
         if (action === 'suspend') {
             suspendLease(id)
                 .then(() => {
-                    console.log('Property suspended successfully');
+                    alert('✅ Property suspended successfully');
                     navigate('/leases', { state: { refresh: Date.now() } });
                 })
                 .catch((error) => {
-                    console.error('Error suspending property:', error);
+                    alert("😵", error);
                 });
-            console.log('Property suspended');
         } else if (action === 'download') {
             downloadLease(id).then(() => {
-                console.log('Property details downloaded successfully');
+                alert('✅ Property details downloaded successfully');
             }).catch((error) => {
-                console.error('Error downloading property details:', error);
+                alert("😵", error);
             });
-
-            // Logic to download the property details
-            console.log('Property details downloaded');
         } else if (action === 'edit') {
             setPropertyId(id);
             if (propertyId) {
                 setShowModal(true);
             }
-            // Logic to edit the property
-            console.log('Property edited');
         } else if (action === 'delete') {
-            // Logic to delete the property
-            console.log('Delete button clicked');
             deleteProperties(id)
                 .then(() => {
-                    console.log('Property deleted successfully');
-
+                    alert('✅ Property deleted successfully');
                     setDataTable((prevData) => prevData.filter(item => item._id !== id));
                 })
                 .catch((error) => {
-                    console.error('Error deleting property:', error);
+                    alert("😵", error);
                 });
-            console.log('Property deleted');
         }
     }
 
@@ -129,7 +115,7 @@ function Table({ data, title, type, onToggle }) {
         <div className='table-container'>
             <div className='table-title-header'>
                 <p className='table-title'>{title}</p>
-                {user.role === "proprietaire" && type!="payement" && <BtnPrimary className='btn-add' text={t('add_btn')} onClick={() => onToggle()} ></BtnPrimary>}
+                {user.role === "proprietaire" && type != "payement" && <BtnPrimary className='btn-add' text={t('add_btn')} onClick={() => onToggle()} ></BtnPrimary>}
             </div>
             <table className='table'>
                 <thead className='table-header'>
@@ -151,8 +137,8 @@ function Table({ data, title, type, onToggle }) {
                             <td className='column-data-btn'>
                                 {btn1 && user.role === "proprietaire" && <BtnPrimary text={t("suspend_btn")} className="Btn-action" onClick={() => handleBtnClick("suspend", dataInstance?._id)} />}
                                 {btn1 && <BtnPrimary text={t("download_btn")} className="Btn-action" onClick={() => handleBtnClick("download", dataInstance?._id)} />}
-                                {!btn1 && user.role === "proprietaire" && type!="payement" &&<BtnPrimary text={t("edit_btn")} className="Btn-action" onClick={() => handleBtnClick("edit", dataInstance?._id)} />}
-                                {!btn1 && user.role === "proprietaire" && type != "payement" &&<BtnPrimary text={t("delete_btn")} className="Btn-action" onClick={() => handleBtnClick("delete", dataInstance?._id)} />}
+                                {!btn1 && user.role === "proprietaire" && type != "payement" && <BtnPrimary text={t("edit_btn")} className="Btn-action" onClick={() => handleBtnClick("edit", dataInstance?._id)} />}
+                                {!btn1 && user.role === "proprietaire" && type != "payement" && <BtnPrimary text={t("delete_btn")} className="Btn-action" onClick={() => handleBtnClick("delete", dataInstance?._id)} />}
                                 {user.role === "locataire" && dataInstance?.status === "completed" && btn1 && <BtnPrimary text={t("download_btn")} className="Btn-action" onClick={() => handleBtnClick("download", dataInstance?._id)} />}
                                 {user.role === "locataire" && dataInstance?.status != "completed" && !btn1 && <BtnPrimary text="payer" className="Btn-action" onClick="" />}
 

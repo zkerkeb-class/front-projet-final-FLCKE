@@ -11,7 +11,6 @@ const ResetPassword = () => {
     const Navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(password)
         passwordChanger({ token, password }).then((result) => {
             alert(result.message)
             Navigate('/login')

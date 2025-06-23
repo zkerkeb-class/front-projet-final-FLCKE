@@ -1,4 +1,3 @@
-
 @media (max-width: 480px) {
     .modal-overlay {
         position: fixed;
@@ -9,9 +8,10 @@
         background-color: rgba(0, 0, 0, 0.5);
         display: flex;
         justify-content: center;
-        align-items: center;        
+        align-items: center;
     }
-     .modal-header{
+
+    .modal-header {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -20,27 +20,30 @@
         background-color: var(--surface);
         border-bottom: 1px solid var(--background-color);
     }
+
     .modal-content {
         width: 90%;
-        height: 50%;    
+        height: 50%;
         background-color: var(--surface);
         border-radius: 10px;
         overflow-y: auto;
         border-bottom: 30px var(--secondary) solid;
     }
-    .modal-body{
+
+    .modal-body {
         width: 90%;
         display: flex;
         flex-direction: column;
         margin: auto;
-        padding-block: 5%;
         justify-content: center;
     }
-    
+
 }
-.title{
+
+.title {
     color: var(--text-color);
 }
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -67,7 +70,7 @@
 .modal-content {
     width: 90%;
     height: 60%;
-    background-color:var(--surface);
+    background-color: var(--surface);
     border-radius: 10px;
     overflow-y: auto;
     border-bottom: 30px var(--secondary) solid;
@@ -78,9 +81,9 @@
     display: flex;
     flex-direction: column;
     margin: auto;
-    padding-block: 5%;
     justify-content: center;
 }
+
 .close-button {
     cursor: pointer;
     background: none;

@@ -1,0 +1,32 @@
+/* Spinner.css */
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Centrer verticalement */
+}
+
+.spinner {
+    border: 8px solid var(--surface);
+    /* Couleur de fond */
+    border-top: 8px solid var(--secondary);
+    /* Couleur du bord supérieur */
+    border-radius: 50%;
+    width: 50px;
+    /* Taille du spinner */
+    height: 50px;
+    /* Taille du spinner */
+    animation: spin 1s linear infinite;
+    /* Animation de rotation */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
