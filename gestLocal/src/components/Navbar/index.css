@@ -182,11 +182,11 @@ ul {
 
 .fa-sun {
     font-size: 1.5rem;
-    color: #FFD43B;
+    color: var(--primary);
 }
 
 .fa-moon {
     font-size: 1.5rem;
-    color: #ffffff;
+    color: var(--text-color-white);
 }
 

@@ -68,7 +68,7 @@
 }
 
 .modal-content {
-    width: 90%;
+    width: 40%;
     height: 60%;
     background-color: var(--surface);
     border-radius: 10px;
