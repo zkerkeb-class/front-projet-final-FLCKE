@@ -51,6 +51,9 @@ function Table({ data, title, type, onToggle }) {
                 "title": t("end_date")
             },
             {
+                "title": t("price")
+            },
+            {
                 "title": t("status")
             }])
             setBtn1(false);
@@ -131,7 +134,8 @@ function Table({ data, title, type, onToggle }) {
                             <td className='column-data'>{dataInstance?.name || dataInstance?.tenant_id?.fullName || dataInstance?.user?.fullName}</td>
                             <td className='column-data'>{dataInstance?.address || dataInstance?.property_id?.name || dataInstance?.property?.name}</td>
                             <td className='column-data'>{dataInstance?.rent_price || dataInstance.end_date && format(dataInstance?.end_date, 'dd/MM/yyyy') || dataInstance?.date && format(dataInstance?.date, 'dd/MM/yyyy')}</td>
-                            <td className='column-data'>
+                            {type === "payement" && <td className='column-data'>{dataInstance?.property?.rent_price}$</td>
+                            }                            <td className='column-data'>
                                 <Badge text={dataInstance?.status} />
                             </td>
                             <td className='column-data-btn'>
