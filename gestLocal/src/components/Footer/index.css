@@ -14,8 +14,8 @@
     gap: 2rem;
 }
 
-.footer-logo h2 {
-    margin-bottom: 0.5rem;
+.footer-logo img {
+    max-width:100px
 }
 
 .footer-logo p {

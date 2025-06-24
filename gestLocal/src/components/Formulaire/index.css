@@ -7,10 +7,23 @@
       padding: 5%;
    }
 
+
 }
 
 @media (max-width: 480px) {
    .register-link {
       display: block;
    }
+}
+
+.reset-forms-img {
+   max-width: 150px;
+}
+
+.reset-forms {
+   margin: 5%;
+}
+.reset-password{
+   color: var(--secondary);
+
 }

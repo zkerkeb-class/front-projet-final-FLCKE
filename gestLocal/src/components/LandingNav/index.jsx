@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import BtnPrimary from '../ButtonPrimary'
 import logo2 from '../../assets/img/logo/logo2vert.png'
 import "./index.css"
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate,useLocation } from 'react-router-dom'
 import { useAuth } from '../../auth/AuthProvider'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '../../config/ThemeContext'
@@ -15,6 +15,16 @@ function LandingNav() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const role = localStorage.getItem("role");
     const { theme, toggleTheme } = useTheme();
+    const location = useLocation();
+
+    useEffect(() => {
+      if (location.hash) {
+        const target = document.getElementById(location.hash.replace('#', ''));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }, [location]);
     return (
         <div className="landingNav">
             <div className="landingNav-header">
@@ -29,29 +39,27 @@ function LandingNav() {
             <div className="landingNav-menu">
                 <ul className="landingNav-list">
                     <li className="landingNav-item">
-                        <Link to={"/#home"} > <span className='text-on-off'> Home </span> </Link>
+                        <Link to={"/#home"}> <span className='text-on-off'>{t("footer_nav_home")}</span> </Link>
                     </li>
                     <li className="landingNav-item">
-                        <Link to={"/#features"} >  <span className='text-on-off'> Features </span> </Link>
+                        <Link to={"/#features"}> <span className='text-on-off'>{t("footer_nav_features")}</span> </Link>
                     </li>
                     <li className="landingNav-item">
-                        <Link to={"/#about"} >  <span className='text-on-off'> {t("dashboard")} </span> </Link>
+                        <Link to={"/#about"}> <span className='text-on-off'>{t("footer_nav_about")}</span> </Link>
                     </li>
-
                 </ul>
             </div>
             {mobil && <div className="landingNav-menu-second">
                 <ul className="landingNav-list">
                     <li className="landingNav-item">
-                        <Link to={"/#home"} > <span className='text-on-off'> Home </span> </Link>
+                        <Link to={"/#home"}> <span className='text-on-off'>{t("footer_nav_home")}</span> </Link>
                     </li>
                     <li className="landingNav-item">
-                        <Link to={"/#features"} >  <span className='text-on-off'> Features </span> </Link>
+                        <Link to={"/#features"}> <span className='text-on-off'>{t("footer_nav_features")}</span> </Link>
                     </li>
                     <li className="landingNav-item">
-                        <Link to={"/#about"} >  <span className='text-on-off'> {t("dashboard")} </span> </Link>
+                        <Link to={"/#about"}> <span className='text-on-off'>{t("footer_nav_about")}</span> </Link>
                     </li>
-
                 </ul>
             </div>}
             <div className="landingNav-logout">

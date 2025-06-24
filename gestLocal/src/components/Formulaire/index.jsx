@@ -4,12 +4,17 @@ import { useState } from 'react'
 import Input from '../Input'
 import { Link, useNavigate } from 'react-router-dom'
 import BtnPrimary from '../ButtonPrimary'
-import { loginService, registerService } from '../../services/authServices'
+import { loginService, registerService, sendPasswordMail } from '../../services/authServices'
 import { useAuth } from '../../auth/AuthProvider'
 import { useTranslation } from "react-i18next";
+import Modal from '../Modal'
+import PropertiesForms from '../PropertiesForms'
+import PasswordReset from '../PasswordReset'
 
 function FormsAuth({ type }) {
     const { t } = useTranslation("common");
+    const [email, setEmail] = useState(null)
+    const [showModal, setShowModal] = useState(false)
     const [isLogin, setIsLogin] = useState(type === 'login')
     const [formData, setFormData] = useState({
         fullName: '',
@@ -72,7 +77,6 @@ function FormsAuth({ type }) {
                 <Input type="email" name="email" placeholder={t("email")} />
                 <Input type="password" name="password" placeholder={t("password")} />
                 {!isLogin && <Input type="tel" name="phone" placeholder={t("phone")} />}
-
                 <div className="register-link">
                     {isLogin ? (
                         <p>{t("no_account")} <Link to={"/register"}>{t("register_cta")}</Link></p>
@@ -81,7 +85,10 @@ function FormsAuth({ type }) {
                     )}
                 </div>
                 <BtnPrimary type="submit" text={!isLogin ? t("submit") : t("login")} />
+                {isLogin && < p >Mot de passe oublié ?< Link onClick={() => { setShowModal(true) }} className='reset-password' > Réinstialliser</Link></p>}
+
             </form>
+            <Modal title="Reset Password" isOpen={showModal} children={<PasswordReset onClose={() => { setShowModal(false) }} />} onClose={() => setShowModal(false)} />
 
         </div>
     )

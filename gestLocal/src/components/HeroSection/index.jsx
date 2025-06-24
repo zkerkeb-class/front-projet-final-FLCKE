@@ -8,7 +8,7 @@ function HeroSection() {
     const { t } = useTranslation("common");
     const  navigate  = useNavigate()
     return (
-        <section className="hero">
+        <section className="hero" id="home">
             <div className="hero-content">
                 <h1 className="hero-title">
                     {t("hero_title_line1")} <br />

@@ -33,7 +33,7 @@
 
 /* Conteneur du pop-over */
 .popover {
-    position: absolute;
+    position: fixed;
     bottom: 30px;
     /* Positionné au-dessus du bouton */
     right: 30px;

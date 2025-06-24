@@ -1,34 +1,37 @@
 import React from "react";
 import "./index.css";
 import { FaMoneyBill, FaFileContract, FaComments, FaBell } from "react-icons/fa";
-
-const features = [
-    {
-        icon: <FaMoneyBill />,
-        title: "Paiements simplifiés",
-        description: "Suivi automatique des loyers, rappels et paiements en ligne sécurisés."
-    },
-    {
-        icon: <FaFileContract />,
-        title: "Contrats numériques",
-        description: "Gérez et signez vos baux directement depuis la plateforme."
-    },
-    {
-        icon: <FaComments />,
-        title: "Communication fluide",
-        description: "Messagerie directe entre locataires et propriétaires, pour éviter les malentendus."
-    },
-    {
-        icon: <FaBell />,
-        title: "Notifications intelligentes",
-        description: "Recevez des alertes pour les paiements, échéances ou documents importants."
-    }
-];
+import { useTranslation } from "react-i18next";
 
 const FeaturesSection = () => {
+    const { t } = useTranslation("common");
+
+    const features = [
+        {
+            icon: <FaMoneyBill />,
+            title: t("feature_payment_title"),
+            description: t("feature_payment_desc")
+        },
+        {
+            icon: <FaFileContract />,
+            title: t("feature_contract_title"),
+            description: t("feature_contract_desc")
+        },
+        {
+            icon: <FaComments />,
+            title: t("feature_communication_title"),
+            description: t("feature_communication_desc")
+        },
+        {
+            icon: <FaBell />,
+            title: t("feature_notification_title"),
+            description: t("feature_notification_desc")
+        }
+    ];
+
     return (
         <section className="features-section" id="features">
-            <h2 className="features-title">Fonctionnalités clés</h2>
+            <h2 className="features-title">{t("features_title")}</h2>
             <div className="features-grid">
                 {features.map((feature, index) => (
                     <div key={index} className="feature-card">
