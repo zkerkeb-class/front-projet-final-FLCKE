@@ -20,7 +20,7 @@ function PasswordReset({ onClose }) {
             alert(result.message)
         }).catch((err) => {
             onClose()
-            alert(err)
+            alert(err.message)
         })
     }
 

@@ -8,11 +8,14 @@ import Table from '../../components/Table';
 import LayoutSecondForm from '../../LayoutSecondForm';
 import { useTranslation } from 'react-i18next';
 import Spinner from '../../components/Spinner';
+import { useLocation } from 'react-router-dom';
 function Rent() {
     const { t } = useTranslation("common");
     const [loading, setLoading] = useState(false)
     const [payements, setPayement] = useState([]);
     const { user } = useAuth();
+    const location = useLocation();
+    const refresh = location.state?.refresh;
     useEffect(() => {
         setLoading(true)
         if (user.role === "locataire") {
@@ -34,8 +37,10 @@ function Rent() {
                 console.log(err)
             })
         }
-
-    }, [user])
+        if (refresh) {
+            setShowModal(false);
+        }
+    }, [user, refresh])
     return (
         <LayoutSecondForm>
             {!loading ? (<><CardList formData={payements} type="payement" />

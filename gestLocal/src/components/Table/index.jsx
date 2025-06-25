@@ -11,10 +11,11 @@ import { format } from 'date-fns';
 import { downloadLease, suspendLease } from '../../services/leasesServices';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
+import { validPayement } from '../../services/payementServices';
 
 function Table({ data, title, type, onToggle }) {
     const [btn1, setBtn1] = useState(false);
-    const { t } = useTranslation("common");
+    const { t, i18n } = useTranslation("common");
     const { user } = useAuth()
     const [listTitle, setListTitle] = useState([]);
     const [dataTable, setDataTable] = useState([]);
@@ -80,7 +81,7 @@ function Table({ data, title, type, onToggle }) {
             setDataTable(data)
         }
 
-    }, [type, data]);
+    }, [type, data, i18n.language]);
     const handleBtnClick = (action, id) => {
         if (action === 'suspend') {
             suspendLease(id)
@@ -107,6 +108,15 @@ function Table({ data, title, type, onToggle }) {
                 .then(() => {
                     alert('✅ Property deleted successfully');
                     setDataTable((prevData) => prevData.filter(item => item._id !== id));
+                })
+                .catch((error) => {
+                    alert("😵", error);
+                });
+        } else if (action === 'pay') {
+            validPayement(id)
+                .then(() => {
+                    alert('✅ Payement accepted');
+                    navigate('/payement-tenant', { state: { refresh: Date.now() } });
                 })
                 .catch((error) => {
                     alert("😵", error);
@@ -144,7 +154,7 @@ function Table({ data, title, type, onToggle }) {
                                 {!btn1 && user.role === "proprietaire" && type != "payement" && <BtnPrimary text={t("edit_btn")} className="Btn-action" onClick={() => handleBtnClick("edit", dataInstance?._id)} />}
                                 {!btn1 && user.role === "proprietaire" && type != "payement" && <BtnPrimary text={t("delete_btn")} className="Btn-action" onClick={() => handleBtnClick("delete", dataInstance?._id)} />}
                                 {user.role === "locataire" && dataInstance?.status === "completed" && btn1 && <BtnPrimary text={t("download_btn")} className="Btn-action" onClick={() => handleBtnClick("download", dataInstance?._id)} />}
-                                {user.role === "locataire" && dataInstance?.status != "completed" && !btn1 && <BtnPrimary text="payer" className="Btn-action" onClick="" />}
+                                {user.role === "locataire" && dataInstance?.status != "completed" && !btn1 && <BtnPrimary text="payer" className="Btn-action" onClick={() => handleBtnClick("pay", dataInstance?._id)} />}
 
 
                             </td>

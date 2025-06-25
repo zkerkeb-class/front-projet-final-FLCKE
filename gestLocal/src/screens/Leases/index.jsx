@@ -45,7 +45,6 @@ function Leases() {
         }
     }, [user._id, refresh]); // Add user._id and refresh to the dependency array
     const handleAddLease = () => {
-        console.log("Add lease clicked");
         setShowModal(!showModal);
     }
 
