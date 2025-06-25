@@ -31,8 +31,8 @@ const FeaturesSection = () => {
 
     return (
         <section className="features-section" id="features">
-            <h2 className="features-title">{t("features_title")}</h2>
-            <div className="features-grid">
+            <h2 className="features-title animate-slide-bottom">{t("features_title")}</h2>
+            <div className="features-grid animate-slide-left">
                 {features.map((feature, index) => (
                     <div key={index} className="feature-card">
                         <div className="feature-icon">{feature.icon}</div>

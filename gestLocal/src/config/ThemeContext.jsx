@@ -19,8 +19,12 @@ export const ThemeProvider = ({ children }) => {
         // On applique les variables CSS dynamiques
         const root = document.documentElement;
         root.style.setProperty('--background-color', theme.background_primary);
+        root.style.setProperty('--modal-overlay-bg', theme.modal_overlay_bg);
         root.style.setProperty('--background-second', theme.background_secondary);
-
+        root.style.setProperty('--gradient-primary-start', theme.gradient_primary_start);
+        root.style.setProperty('--gradient-primary-middle', theme.gradient_primary_middle);
+        root.style.setProperty('--gradient-secondary-start', theme.gradient_secondary_start);
+        root.style.setProperty('--gradient-secondary-middle', theme.gradient_secondary_middle);
         root.style.setProperty('--text-color', theme.text);
         root.style.setProperty('--text-color-secondary', theme.text_btn);
         root.style.setProperty('--text-color-hover', theme.color);

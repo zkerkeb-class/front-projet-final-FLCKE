@@ -49,22 +49,22 @@ function ProfilForm() {
         })
     }
     return (
-        <form onChange={(e) => handleChange(e)} onSubmit={(e) => handleSubmit(e)} className='form-profil'>
-            <label className='label-profil-form'>
+        <form onChange={(e) => handleChange(e)} onSubmit={(e) => handleSubmit(e)} className='form-profil '>
+            <label className='label-profil-form animate-slide-bottom '>
                 <h4>{t("fullName")}</h4>
                 <Input type="text" name="fullName" defaultValue={user?.fullName} placeholder={t("fullName")} />
             </label>
-            <label className='label-profil-form'>
+            <label className='label-profil-form animate-slide-bottom'>
                 <h4>{t("email")}</h4>
                 <Input type="email" name="email" defaultValue={user?.email} placeholder={t("email")} />
             </label>
-            <label className='label-profil-form'>
+            <label className='label-profil-form animate-slide-bottom'>
                 <h4>{t("password")}</h4>
                 <Input type="password" defaultValue="xxxxxxxxxxx" placeholder={t("password")} />
 
                 <Link to="/" className='password-link-changer ' onClick={(e) => handleChangePassword(e)}>{t("edit_btn")}</Link>
             </label>
-            <label className='label-profil-form' >
+            <label className='label-profil-form animate-slide-bottom' >
                 <h4>{t("phone")}</h4>
                 <Input type="tel" name="phone" defaultValue={user?.phone} placeholder={t("phone")} />
             </label>

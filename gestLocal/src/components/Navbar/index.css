@@ -7,6 +7,9 @@ ul {
     list-style: none;
     padding: 0;
 }
+.navbar{
+    z-index: 999;
+}
 
 @media (min-width: 481px) and (max-width: 768px) {
     .navbar-logo {

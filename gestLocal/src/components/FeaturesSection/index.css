@@ -1,5 +1,5 @@
 .features-section {
-    background-color: #f8f9fb;
+    background-color: var(--surface);
     text-align: center;
     padding-block: 5%;
     justify-content: center;
@@ -9,7 +9,7 @@
 .features-title {
     font-size: 2.5rem;
     margin-block: 3rem;
-    color: #1a1a1a;
+    color: var(--text-color);
 }
 
 .features-grid {
@@ -21,16 +21,16 @@
 }
 
 .feature-card {
-    background: white;
+    background: var(--text-color-white);
     border-radius: 1rem;
     padding: 1rem;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 20px var(--shadow-color);
     transition: all 0.3s ease;
 }
 
 .feature-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 25px var(--shadow-color);
 }
 
 .feature-icon {
@@ -42,11 +42,11 @@
 .feature-title {
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
-    color: #222;
+    color: var(--text-color);
 }
 
 .feature-description {
-    color: #555;
+    color: var(--muted-text);
     font-size: 1rem;
     white-space: normal;
 }

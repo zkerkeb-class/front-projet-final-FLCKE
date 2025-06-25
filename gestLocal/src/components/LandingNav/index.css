@@ -6,6 +6,7 @@
     background-color: var(--background-color);
     box-shadow: 0 2px 8px var(--shadow-color);
     position: fixed;
+    z-index: 999;
 
 }
 
@@ -28,15 +29,14 @@
 
 .landingNav-item a {
     text-decoration: none;
-    color: #111;
+    color: var(--text-color);
     font-weight: 500;
     font-size: 1rem;
     transition: color 0.3s ease;
 }
 
 .landingNav-item a:hover {
-    color: #00ff6c;
-    /* vert néon */
+    color: var(--secondary);
 }
 
 .text-on-off {

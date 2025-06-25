@@ -1,8 +1,8 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import BtnPrimary from '../ButtonPrimary'
 import logo2 from '../../assets/img/logo/logo2vert.png'
 import "./index.css"
-import { Link, Navigate, useNavigate,useLocation } from 'react-router-dom'
+import { Link, Navigate, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../../auth/AuthProvider'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '../../config/ThemeContext'
@@ -18,16 +18,16 @@ function LandingNav() {
     const location = useLocation();
 
     useEffect(() => {
-      if (location.hash) {
-        const target = document.getElementById(location.hash.replace('#', ''));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
+        if (location.hash) {
+            const target = document.getElementById(location.hash.replace('#', ''));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
         }
-      }
     }, [location]);
     return (
         <div className="landingNav">
-            <div className="landingNav-header">
+            <div className="landingNav-header ">
                 <img src={logo2} alt="logo" className='landingNav-logo' />
                 <div className="navBar-mobil-btn">
                     <BtnSecondary text={<>

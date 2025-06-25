@@ -1,5 +1,5 @@
 .mockup-section {
-    background: white;
+    background: var(--background-color);
     width: 100vw;
     padding-block: 5%;
 }

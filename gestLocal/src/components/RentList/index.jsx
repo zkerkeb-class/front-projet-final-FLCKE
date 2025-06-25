@@ -21,9 +21,9 @@ function RentList() {
     }, [user])
     return (
         <section className='rent-list-container' >
-            <h1 className="rent-list-title">Performance</h1>
+            <h1 className="rent-list-title animate-slide-bottom">Performance</h1>
             {!loading ?
-                (<div className='rent-list'>
+                (<div className='rent-list animate-slide-bottom'>
                     {payement.map((element, index) => (
                         <CardResume
                             data={element.date && format(element.date, "dd/MM")}

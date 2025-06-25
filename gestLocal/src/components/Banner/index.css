@@ -65,8 +65,9 @@
     width: 100%;
     padding: 2%;
     background-color: var(--primary);
-    background-image: radial-gradient(circle at top left, #a0b910 0%, #a8b91080 20%, transparent 20%),
-        radial-gradient(circle at bottom right, #10B981 0%, #10B98180 30%, transparent 30%);
+    background-image:
+        radial-gradient(circle at top left, var(--gradient-primary-start) 0%, var(--gradient-primary-middle) 20%, transparent 20%),
+        radial-gradient(circle at bottom right, var(--gradient-secondary-start) 0%, var(--gradient-secondary-middle) 30%, transparent 30%);
     color: var(--text-color-white);
     position: relative;
 
@@ -140,8 +141,9 @@
         width: 100%;
         padding: 2%;
         background-color: var(--primary);
-        background-image: radial-gradient(circle at top left, #a0b910 0%, #a8b91080 20%, transparent 20%),
-            radial-gradient(circle at bottom right, #10B981 0%, #10B98180 30%, transparent 30%);
+        background-image:
+            radial-gradient(circle at top left, var(--gradient-primary-start) 0%, var(--gradient-primary-middle) 20%, transparent 20%),
+            radial-gradient(circle at bottom right, var(--gradient-secondary-start) 0%, var(--gradient-secondary-middle) 30%, transparent 30%);
         color: var(--text-color-white);
         position: relative;
         font-size: 0.7rem;
@@ -192,8 +194,9 @@
 
         padding: 2%;
         background-color: var(--primary);
-        background-image: radial-gradient(circle at top left, #a0b910 0%, #a8b91080 20%, transparent 20%),
-            radial-gradient(circle at bottom right, #10B981 0%, #10B98180 30%, transparent 30%);
+        background-image:
+            radial-gradient(circle at top left, var(--gradient-primary-start) 0%, var(--gradient-primary-middle) 20%, transparent 20%),
+            radial-gradient(circle at bottom right, var(--gradient-secondary-start) 0%, var(--gradient-secondary-middle) 30%, transparent 30%);
         color: var(--text-color-white);
         position: relative;
         font-size: 0.5rem;
@@ -239,9 +242,9 @@
 
         padding: 2%;
         background-color: var(--primary);
-        background-image: radial-gradient(circle at top left, #a0b910 0%, #a8b91080 20%, transparent 20%),
-            radial-gradient(circle at bottom right, #10B981 0%, #10B98180 30%, transparent 30%);
-        color: var(--text-color-white);
+        background-image:
+                radial-gradient(circle at top left, var(--gradient-primary-start) 0%, var(--gradient-primary-middle) 20%, transparent 20%),
+                radial-gradient(circle at bottom right, var(--gradient-secondary-start) 0%, var(--gradient-secondary-middle) 30%, transparent 30%);        color: var(--text-color-white);
         position: relative;
         font-size: 0.5rem;
     }

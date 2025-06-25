@@ -21,10 +21,10 @@ function CardResumeList() {
 
     return (
 
-        <section className="card-resume-list-container">
+        <section className="card-resume-list-container animate-on-scroll">
             <h1 className="card-resume-title">{t("performance")} </h1>
             {!loading ? (<>
-                <div className='card-resume-list'>
+                <div className='card-resume-list animate-slide-bottom'>
                     <CardResume data={stat?.totalRevenue || 0} text={t("income")} link="/payement-tenant" icon="fa-dollar-sign" />
                     <CardResume dataType="primary" data={stat?.totalProperties || 0} text={t("properties")} link='/properties' icon=" fa-house-circle-check" />
                     <CardResume data={stat?.totalLeases || 0} text={t("leases")} link="/leases" icon=" fa-people-roof" />

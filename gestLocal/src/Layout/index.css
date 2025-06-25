@@ -6,11 +6,11 @@
     justify-content: center;
     width: 100vw;
     height: 100vh;
-   
+
     background-color: var(--background-color);
-        background-image:
-            radial-gradient(circle at top left, #a0b910 0%, #a8b91080 20%, transparent 20%),
-            radial-gradient(circle at bottom right, #10B981 0%, #10B98180 30%, transparent 30%);
+    background-image:
+        radial-gradient(circle at top left, var(--gradient-primary-start) 0%, var(--gradient-primary-middle) 20%, transparent 20%),
+        radial-gradient(circle at bottom right, var(--gradient-secondary-start) 0%, var(--gradient-secondary-middle) 30%, transparent 30%);
     background-repeat: no-repeat;
     background-size: 100vw 100vh;
 

@@ -44,7 +44,7 @@
 }
 
 .hero-btn:hover {
-    background-color: #000;
+    background-color:var(--text-color);
 }
 
 .hero-image {

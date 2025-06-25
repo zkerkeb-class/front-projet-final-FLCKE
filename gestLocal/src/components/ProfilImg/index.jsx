@@ -24,7 +24,7 @@ function ProfilImg() {
     })
   }, [user])
   return (
-    <div className='profil-img-container'>
+    <div className='profil-img-container animate-slide-bottom'>
       <div>
         < img src={file ? file : logo} className='profil-img' />
       </div>

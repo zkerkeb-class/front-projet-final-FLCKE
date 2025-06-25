@@ -12,7 +12,7 @@ function BtnSecondary({ text, type, to, onClick }) {
     }
 
     return (
-        <button className="btn-secondary" type={type} onClick={handleClick}  >
+        <button className="btn-secondary " type={type} onClick={handleClick}  >
             {text}
         </button>
     )

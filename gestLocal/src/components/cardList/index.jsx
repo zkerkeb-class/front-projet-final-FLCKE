@@ -21,11 +21,11 @@ function CardList({ formData, type, onToggle }) {
         setData((prevData) => prevData.filter(item => item._id !== id));
     };
     return (
-        <div className='card-list'>
+        <div className='card-list '>
             <div className='card-list-header'>
-                {type === "properties" && <p className='card-list-title'>{t("properties") } </p>}
-                {type === "leases" && <p className='card-list-title'>{t("leases") } </p>}
-                {type === "payement" && <p className='card-list-title'>{t("payement") } </p>}
+                {type === "properties" && <p className='card-list-title animate-slide-bottom'>{t("properties") } </p>}
+                {type === "leases" && <p className='card-list-title animate-slide-bottom'>{t("leases") } </p>}
+                {type === "payement" && <p className='card-list-title animate-slide-bottom'>{t("payement") } </p>}
 
                 {type != "payement" && <BtnPrimary text={t('add_btn')} type="button" onClick={() => onToggle()} />}
             </div>

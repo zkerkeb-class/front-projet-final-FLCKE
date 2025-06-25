@@ -63,7 +63,7 @@ function Card({ id, title, badge, price, location, type, onDelete }) {
     }
   }
   return (
-    <div className="card" >
+    <div className="card animate-slide-bottom" >
       <div className="card-header">
         <p className="card-title">{title}</p>
         <Badge text={badge} />

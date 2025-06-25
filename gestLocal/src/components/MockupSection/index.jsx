@@ -9,7 +9,7 @@ const MockupSection = () => {
     return (
         <section className="mockup-section" id="about">
             <div className="mockup-content">
-                <div className="mockup-text">
+                <div className="mockup-text animate-slide-left">
                     <h2 className="mockup-title">
                         {t("mockup_title_1")} <span className="text-second">{t("mockup_title_2")}</span> {t("mockup_title_3")}
                     </h2>
@@ -17,7 +17,7 @@ const MockupSection = () => {
                         {t("mockup_paragraph")}
                     </p>
                 </div>
-                <div className="mockup-image">
+                <div className="mockup-image animate-slide-bottom">
                     <img src={mockupImage} alt={t("mockup_img_alt")} />
                 </div>
             </div>

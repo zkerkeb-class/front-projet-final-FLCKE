@@ -125,20 +125,20 @@ function Table({ data, title, type, onToggle }) {
     }
 
     return (
-        <div className='table-container'>
+        <div className='table-container animate-slide-bottom'>
             <div className='table-title-header'>
                 <p className='table-title'>{title}</p>
                 {user.role === "proprietaire" && type != "payement" && <BtnPrimary className='btn-add' text={t('add_btn')} onClick={() => onToggle()} ></BtnPrimary>}
             </div>
             <table className='table'>
-                <thead className='table-header'>
+                <thead className='table-header animate-slide-bottom'>
                     <tr className='table-header-title'>
                         {listTitle.map((instance, index) => (
                             <th className='column-title' key={index}>{instance?.title}</th>
                         ))}
                     </tr>
                 </thead>
-                <tbody className='table-body'>
+                <tbody className='table-body animate-slide-bottom'>
                     {dataTable.map((dataInstance, key) => (
                         <tr className='table-body-line' key={dataInstance._id}>
                             <td className='column-data'>{dataInstance?.name || dataInstance?.tenant_id?.fullName || dataInstance?.user?.fullName}</td>

@@ -12,13 +12,13 @@ function Banner() {
     const { t } = useTranslation("common");
     const { user } = useAuth();
     return (
-        <section className="banner">
-            <div className="banner-content">
+        <section className="banner animate-slide-bottom">
+            <div className="banner-content animate-slide-bottom">
                 <h1>{t("welcome_user", { name: user.fullName })}</h1>
                 <p>{t("welcome_user_text")}</p>
             </div>
 
-            <div className="banner-image">
+            <div className="banner-image ">
                 <img src={menIdea} alt="Banner" className='img-2' />
                 <img src={tobonne} alt="Banner" className='img-tobonne' />
                 <img src={tobo} alt="Banner" className='img-tobo' />

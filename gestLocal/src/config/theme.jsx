@@ -18,6 +18,11 @@ export const lightTheme = {
     badge_termine_color: "#856404",
     shadowcolor: "rgba(0, 0, 0, 0.1)", // Couleur de l'ombre
     text_color_white: "#ffffff", // Texte blanc pour les boutons
+    gradient_primary_start: "#a0b910",
+    gradient_primary_middle: "#a8b91080",
+    gradient_secondary_start: "#10B981",
+    gradient_secondary_middle: "#10B98180",
+    modal_overlay_bg: "rgba(0, 0, 0, 0.5)",
 };
 
 export const darkTheme = {
@@ -39,4 +44,9 @@ export const darkTheme = {
     badge_termine_color: "#856404",
     shadowcolor: "rgba(61, 61, 61, 0.5)", // Couleur de l'ombre
     text_color_white: "#ffffff", // Texte blanc pour les boutons
+    gradient_primary_start: "#a0b910",
+    gradient_primary_middle: "#a8b91080",
+    gradient_secondary_start: "#10B981",
+    gradient_secondary_middle: "#10B98180",
+    modal_overlay_bg: "rgba(0, 0, 0, 0.5)",
 };
